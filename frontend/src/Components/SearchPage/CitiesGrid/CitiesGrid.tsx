@@ -10,15 +10,15 @@ type Props = {
 const CitiesGrid = ({ data }: Props) => {
   const onUpdated = () => {};
   return (
-    <div>
+    <>
       {data === null ? (
-        <p>Films not found</p>
+        <p>Cities not found</p>
       ) : (
         data?.map((city, index) => (
           <CityCard key={index} city={city} onUpdated={onUpdated} />
         ))
       )}
-    </div>
+    </>
   );
 };
 

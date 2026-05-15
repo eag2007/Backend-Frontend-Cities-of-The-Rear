@@ -1,9 +1,42 @@
 import "./Statistics.css";
 import "../../../style.css";
+import { useEffect, useState } from "react";
+import { getAllCitiesApi } from "../../../Services/CityService";
+import { City } from "../../../Models/City";
 
 type Props = {};
 
 const Statistics = (props: Props) => {
+  const [cities, setCities] = useState<City[]>([
+    {
+      id: 1,
+      names: [""],
+      imageUrl: "",
+      shortDesc: "",
+      longDesc: "",
+      contribution: "",
+      categories: [1],
+      coordinates: [1, 1],
+    },
+  ]);
+
+  const getCities = async () => {
+    await getAllCitiesApi()
+      .then((res) => {
+        if (res?.data) {
+          setCities(res.data);
+        }
+      })
+      .catch((e) => {
+        console.log("No city found");
+      });
+  };
+
+  useEffect(() => {
+    getCities();
+    // getCities();
+  }, []);
+
   return (
     <div>
       <section className="statistics">
@@ -12,7 +45,7 @@ const Statistics = (props: Props) => {
           <div className="stats-grid">
             <div className="stat-card">
               <div className="stat-number" id="citiesCount">
-                0
+                {cities.length}
               </div>
               <div className="stat-label">Городов в базе</div>
             </div>

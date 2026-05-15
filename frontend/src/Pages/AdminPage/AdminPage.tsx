@@ -4,7 +4,7 @@ import "./AdminPage.css";
 import "../../style.css";
 import * as Yup from "yup";
 import { useAuth } from "../../Context/useAuth";
-import { UserProfile } from "../../Models/User";
+import { UserProfile, UserProfileToken } from "../../Models/User";
 import { getAllAdminsApi } from "../../Services/UserService";
 import { deleteCityByIdApi, getAllCitiesApi } from "../../Services/CityService";
 import { City } from "../../Models/City";
@@ -50,7 +50,9 @@ const AdminPage: React.FC = () => {
   } = useForm<RegisterFormsInput>({ resolver: yupResolver(validation) });
 
   const navigate = useNavigate();
-  const [currentAdmin, setCurrentAdmin] = useState<UserProfile | null>(null);
+  const [currentAdmin, setCurrentAdmin] = useState<UserProfileToken | null>(
+    null,
+  );
   const { user } = useAuth();
   const [admins, setAdmins] = useState<UserProfile[]>([]);
   const [cities, setCities] = useState<City[]>([]);
@@ -94,93 +96,23 @@ const AdminPage: React.FC = () => {
 
   // Имитация загрузки данных (без API)
   useEffect(() => {
-    setTimeout(() => {
-      // Текущий админ
-      setCurrentAdmin(user);
+    getAdmins();
 
-      //   getAdmins();
-      // Список админов
-      setAdmins([
-        {
-          id: 1,
-          username: "admin",
-          email: "admin@example.com",
-          role: "super_admin",
-          createdAt: new Date().toISOString(),
-        },
-        {
-          id: 2,
-          username: "editor",
-          email: "editor@example.com",
-          role: "admin",
-          createdAt: new Date("2024-01-15").toISOString(),
-        },
-        {
-          id: 3,
-          username: "moderator",
-          email: "moderator@example.com",
-          role: "admin",
-          createdAt: new Date("2024-02-20").toISOString(),
-        },
-      ]);
+    getCities();
 
-      // getCities();
-      // Список городов
-      //   const mockCities: City[] = [
-      //     {
-      //       id: 1,
-      //       name: "Челябинск",
-      //       contribution: "Танки, двигатели, боеприпасы",
-      //       categories: [1, 2],
-      //       imageUrl: "https://via.placeholder.com/100",
-      //     },
-      //     {
-      //       id: 2,
-      //       name: "Нижний Тагил",
-      //       contribution: "Танки Т-34, бронекорпуса",
-      //       categories: [3, 4],
-      //     },
-      //     {
-      //       id: 3,
-      //       name: "Новосибирск",
-      //       contribution: "Самолёты, пулемёты, оптика",
-      //       categories: ["tech", "weapon"],
-      //     },
-      //     {
-      //       id: 4,
-      //       name: "Иваново",
-      //       contribution: "Обмундирование, ткани",
-      //       categories: ["uniform"],
-      //     },
-      //     {
-      //       id: 5,
-      //       name: "Казань",
-      //       contribution: "Порох, самолёты, обмундирование",
-      //       categories: ["weapon", "uniform"],
-      //     },
-      //     {
-      //       id: 6,
-      //       name: "Омск",
-      //       contribution: 'Самолёты, "Катюши", танки',
-      //       categories: ["tech", "weapon"],
-      //     },
-      //   ];
-      //   setCities(mockCities);
+    // Статистика
+    setStats({
+      totalCities: cities.length,
+      totalAdmins: admins.length,
+      categoriesCount: {
+        weapon: cities.filter((c) => c.categories.includes(1)).length,
+        uniform: cities.filter((c) => c.categories.includes(2)).length,
+        tech: cities.filter((c) => c.categories.includes(3)).length,
+        food: cities.filter((c) => c.categories.includes(4)).length,
+      },
+    });
 
-      // Статистика
-      setStats({
-        totalCities: cities.length,
-        totalAdmins: 3,
-        categoriesCount: {
-          weapon: cities.filter((c) => c.categories.includes(1)).length,
-          uniform: cities.filter((c) => c.categories.includes(2)).length,
-          tech: cities.filter((c) => c.categories.includes(3)).length,
-          food: cities.filter((c) => c.categories.includes(4)).length,
-        },
-      });
-
-      setLoading(false);
-    }, 500);
+    setLoading(false);
   }, []);
 
   const handleAddAdmin = async (form: RegisterFormsInput) => {
@@ -195,7 +127,7 @@ const AdminPage: React.FC = () => {
   };
 
   const handleDeleteAdmin = async (id: number) => {
-    if (id === currentAdmin?.id) {
+    if (user === currentAdmin?.id) {
       alert("Нельзя удалить самого себя");
       return;
     }

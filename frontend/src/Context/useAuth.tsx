@@ -2,11 +2,12 @@ import { createContext, useEffect, useState } from "react";
 import { data, useNavigate } from "react-router-dom";
 import React from "react";
 import axios from "axios";
-import { UserProfile } from "../Models/User";
+import { UserProfile, UserProfileToken } from "../Models/User";
 import { loginAPI } from "../Services/AuthService";
+import { idText } from "typescript";
 
 type UserContextType = {
-  user: UserProfile | null;
+  user: UserProfileToken | null;
   token: string | null;
   loginUser: (email: string, password: string) => void;
   logout: () => void;
@@ -21,7 +22,7 @@ export const UserProvider = ({ children }: Props) => {
   const navigate = useNavigate();
   const [token, setToken] = useState<string | null>(null);
   const [role, setRole] = useState<string | null>(null);
-  const [user, setUser] = useState<UserProfile | null>(null);
+  const [user, setUser] = useState<UserProfileToken | null>(null);
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
@@ -38,37 +39,23 @@ export const UserProvider = ({ children }: Props) => {
   }, [token]);
 
   const loginUser = async (email: string, password: string) => {
-    //await loginAPI(email, password)
-    //   .then((res) => {
-    //     if (res) {
-    //       localStorage.setItem("token", res?.data.token);
-    //       const userObj = {
-    //         userName: res?.data.userName,
-    //         email: res?.data.email,
-    //         role: res?.data.role,
-    //       };
-    //       localStorage.setItem("user", JSON.stringify(userObj));
-    //       setToken(res?.data.token);
-    //       setUser(userObj);
-    //       navigate("/add");
-    //     }
-    //   })
-    //   .catch((e) => console.log("Server error occured"));
-
-    //TODO: Delete this temp one< after api
-
-    localStorage.setItem("token", "ebrdt4eh4e");
-    const userObj = {
-      id: 1,
-      username: "Admin",
-      email: "evwee@vev.ru",
-      role: "super_admin",
-      createdAt: new Date().toISOString(),
-    };
-    localStorage.setItem("user", JSON.stringify(userObj));
-    setToken("ebrdt4eh4e");
-    setUser(userObj);
-    navigate("/");
+    await loginAPI(email, password)
+      .then((res) => {
+        if (res) {
+          localStorage.setItem("token", res?.data.token);
+          const userObj = {
+            username: res?.data.username,
+            email: res?.data.email,
+            role: res?.data.role,
+            token: res?.data.token,
+          };
+          localStorage.setItem("user", JSON.stringify(userObj));
+          setToken(res?.data.token);
+          setUser(userObj);
+          navigate("/");
+        }
+      })
+      .catch((e) => console.log("Server error occured"));
   };
 
   const isLoggedIn = () => {

@@ -2,7 +2,7 @@ import { Category } from "./Category";
 
 export type City={
     id: number;
-    name: string;
+    names: string[];
     imageUrl: string;
     shortDesc: string;
     longDesc: string;

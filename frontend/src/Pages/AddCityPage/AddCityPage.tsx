@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ReactQuill from "react-quill-new";
 import "react-quill-new/dist/quill.snow.css";
@@ -8,6 +8,7 @@ import "leaflet/dist/leaflet.css";
 import "./AddCityPage.css";
 import { postCityApi } from "../../Services/CityService";
 import AddCityPageHeader from "../../Components/AddCityPage/AddCityPageHeader/AddCityPageHeader";
+import { useAuth } from "../../Context/useAuth";
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -46,19 +47,28 @@ const LocationMarker = ({
 const AddCityPage: React.FC = () => {
   const navigate = useNavigate();
   const [saving, setSaving] = useState(false);
+  const { user } = useAuth();
   const [mapCenter, setMapCenter] = useState<[number, number]>([
     55.751244, 37.618423,
   ]);
 
   const [city, setCity] = useState({
-    name: "",
+    names: [""],
     imageUrl: "",
     shortDesc: "",
     longDesc: "",
     contribution: "",
     categories: [] as number[],
-    coordinates: [55.751244, 37.618423] as [number, number], // Добавляем координаты
+    coordinates: [55.751244, 37.618423] as [number, number],
   });
+
+  // Отдельное состояние для строки ввода названий (через запятую)
+  const [namesInput, setNamesInput] = useState("");
+
+  // Синхронизация namesInput с city.names при загрузке
+  useEffect(() => {
+    setNamesInput(city.names.join(", "));
+  }, []);
 
   const categories: Category[] = [
     { id: 1, name: "Оружие", color: "#dc2626" },
@@ -129,9 +139,29 @@ const AddCityPage: React.FC = () => {
     setMapCenter(position);
   };
 
+  // Обработчик изменения поля ввода названий
+  const handleNamesInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const rawValue = e.target.value;
+    setNamesInput(rawValue);
+
+    // Разбиваем строку по запятым, обрезаем пробелы, убираем пустые
+    const namesArray = rawValue
+      .split(",")
+      .map((name) => name.trim())
+      .filter((name) => name !== "");
+
+    // Обновляем city.names (если массив пуст, оставляем [""] для валидации)
+    setCity((prev) => ({
+      ...prev,
+      names: namesArray.length ? namesArray : [""],
+    }));
+  };
+
   const handleSave = async () => {
-    if (!city.name.trim()) {
-      alert("Введите название города");
+    // Валидация: проверяем, что есть хотя бы одно непустое название
+    const validNames = city.names.filter((name) => name.trim() !== "");
+    if (validNames.length === 0) {
+      alert("Введите хотя бы одно название города");
       return;
     }
     if (!city.shortDesc.trim()) {
@@ -155,16 +185,17 @@ const AddCityPage: React.FC = () => {
 
     try {
       await postCityApi(
-        city.name,
+        city.names, // передаём массив названий
         city.imageUrl,
         city.shortDesc,
         city.longDesc,
         city.contribution,
         city.categories,
-        city.coordinates, // Передаем координаты
+        city.coordinates,
+        user?.token || null,
       );
       alert("Город успешно добавлен!");
-      navigate("/admin");
+      navigate("/");
     } catch (error) {
       console.error("Ошибка при добавлении города:", error);
       alert("Произошла ошибка при добавлении города");
@@ -183,19 +214,30 @@ const AddCityPage: React.FC = () => {
             <div className="form-section">
               <label className="form-label">
                 <span className="label-icon">🏙️</span>
-                Название города
+                Названия города
                 <span className="required">*</span>
               </label>
               <input
                 type="text"
                 className="form-input"
-                value={city.name}
-                onChange={(e) => setCity({ ...city, name: e.target.value })}
-                placeholder="Введите название города"
+                value={namesInput}
+                onChange={handleNamesInputChange}
+                placeholder="Введите названия через запятую (например, Челябинск, Нижний Тагил, Иваново)"
               />
               <p className="form-hint">
-                Например: Челябинск, Нижний Тагил, Иваново
+                Можно указать несколько названий (исторические, народные) через
+                запятую
               </p>
+              {city.names.length > 0 && city.names[0] !== "" && (
+                <div className="names-preview">
+                  <span className="preview-badge">Будет добавлено:</span>
+                  {city.names.map((name, idx) => (
+                    <span key={idx} className="name-tag">
+                      {name}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="form-section">
@@ -247,6 +289,7 @@ const AddCityPage: React.FC = () => {
                 className="form-input"
                 value={city.imageUrl}
                 onChange={(e) => setCity({ ...city, imageUrl: e.target.value })}
+                placeholder="https://example.com/city-photo.jpg"
               />
               <p className="form-hint">
                 Вставьте прямую ссылку на изображение города
@@ -347,7 +390,7 @@ const AddCityPage: React.FC = () => {
                 {city.imageUrl ? (
                   <img
                     src={city.imageUrl}
-                    alt={city.name}
+                    alt={city.names[0] || "Город"}
                     onError={(e) => {
                       (e.target as HTMLImageElement).style.display = "none";
                       (e.target as HTMLImageElement).parentElement!.innerHTML =

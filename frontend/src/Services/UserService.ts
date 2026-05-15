@@ -6,7 +6,7 @@ import { handleError } from "../Helpers/ErrorHandler";
 export const getAllAdminsApi = async () => {
   try {
     const result = await axios.get<UserProfile[]>(
-      api + `cities`
+      api + `users/admins`
     );
     return result;
   } catch (error) {

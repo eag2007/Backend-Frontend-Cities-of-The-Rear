@@ -14,68 +14,33 @@ import {
   Tag,
   Trophy,
 } from "lucide-react";
+import { getCityByIdApi } from "../../Services/CityService";
 
-type Props = {};
-
-const QuillContent: React.FC<{ content: string }> = ({ content }) => {
-  return (
-    <div
-      className="quill-content"
-      dangerouslySetInnerHTML={{ __html: content }}
-    />
-  );
-};
-
-const c: City = {
-  id: 1,
-  name: "Челябинск",
-  imageUrl:
-    "https://upload.wikimedia.org/wikipedia/ru/8/8f/Ploszczadj_Riewoliuucyi_w_Czeliaabinskie_%281950%29.jpg",
-  shortDesc: "verebes",
-  longDesc: `<p>Здесь создается переменная <code>current</code>, которая имеет тип Season. При этом консоль браузера выведет нам число 2 - значение константы 
-<code>Season.Summer</code>.</p>
-<h3>Числовые перечисления</h3>
-<p>По умолчанию константы перечисления, как в примере выше, представляют числовые значения. То есть это так называемое числовое перечисление, в котором каждой константе 
-сопоставляется числовое значение.</p>
-<p>Так, созданное выше в примере перечисление</p>`,
-  contribution: "verbe",
-  categories: [1, 2, 3],
-  coordinates: [23, 3],
-};
-
-const CityPage = (props: Props) => {
+const CityPage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [city, setCity] = useState<City | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setCity(c);
-    setLoading(false);
-  }, []);
+    if (id) {
+      getCity();
+    }
+  }, [id]);
 
-  //   useEffect(() => {
-  //     const loadCity = async () => {
-  //       try {
-  //         setLoading(true);
-  //         const cities = await API.getCities();
-  //         const foundCity = cities.find(c => c.id === Number(id));
-
-  //         if (!foundCity) {
-  //           navigate('/search');
-  //           return;
-  //         }
-
-  //         setCity(foundCity);
-  //       } catch (error) {
-  //         console.error('Ошибка загрузки города:', error);
-  //       } finally {
-  //         setLoading(false);
-  //       }
-  //     };
-
-  //     loadCity();
-  //   }, [id, navigate]);
+  const getCity = async () => {
+    try {
+      setLoading(true);
+      const res = await getCityByIdApi(Number(id));
+      if (res?.data) {
+        setCity(res.data);
+      }
+    } catch (e) {
+      console.log("No city found");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const categoryConfig: Record<string, { name: string }> = {
     Weapon: { name: "Оружие" },
@@ -109,8 +74,8 @@ const CityPage = (props: Props) => {
   }
 
   const fullDescription = city.longDesc || city.shortDesc;
-
-  const hasHtmlContent = /<[a-z][\s\S]*>/i.test(fullDescription.toString());
+  // Простая проверка на наличие HTML-тегов (начинается с < или содержит >)
+  const hasHtmlContent = /<[^>]+>/i.test(fullDescription);
 
   return (
     <div className="city-page-page">
@@ -118,7 +83,10 @@ const CityPage = (props: Props) => {
         <div
           className="city-page-hero-image"
           style={{
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url(${city.imageUrl || "https://via.placeholder.com/1200x500?text=Фото+города"})`,
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url(${
+              city.imageUrl ||
+              "https://via.placeholder.com/1200x500?text=Фото+города"
+            })`,
           }}
         >
           <div className="city-page-hero-overlay">
@@ -128,7 +96,7 @@ const CityPage = (props: Props) => {
               </span>
               <span>Город трудовой доблести</span>
             </div>
-            <h1 className="city-page-title">{city.name}</h1>
+            <h1 className="city-page-title">{city.names[0]}</h1>
           </div>
         </div>
       </div>
@@ -174,7 +142,10 @@ const CityPage = (props: Props) => {
               </h2>
               <div className="city-page-full-description">
                 {hasHtmlContent ? (
-                  <QuillContent content={fullDescription.toString()} />
+                  <div
+                    className="city-page-quill-content"
+                    dangerouslySetInnerHTML={{ __html: fullDescription }}
+                  />
                 ) : (
                   <p>{fullDescription}</p>
                 )}

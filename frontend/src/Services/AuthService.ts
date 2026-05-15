@@ -6,7 +6,7 @@ import { number } from "yup";
 
 export const loginAPI = async (email: string, password: string)=>{
     try {
-        const data = await axios.post<UserProfileToken>(api+"Account/login",{
+        const data = await axios.post<UserProfileToken>(api+"auth/login",{
             email: email,
             password: password,
         });

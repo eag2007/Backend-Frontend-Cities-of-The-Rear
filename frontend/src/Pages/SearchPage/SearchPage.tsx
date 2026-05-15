@@ -8,21 +8,6 @@ import { Search } from "lucide-react";
 
 type Props = {};
 
-let data: City[] = [
-  {
-    id: 1,
-    name: "Челябинск",
-    imageUrl:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo6O3sR0464ER0b4JrsZgBmiYniWfsQJZ2hQ&s",
-    shortDesc:
-      "В годы войны Челябинск называли 'Танкоградом'. Производство танков КВ и ИС, а также дизель-моторов. Каждый второй танк Т-34 имел двигатель, сделанный в Челябинске.",
-    longDesc: "gbrt",
-    contribution: "Танки, двигатели, боеприпасы",
-    categories: [1, 2],
-    coordinates: [1, 1],
-  },
-];
-
 const categoriesMap: { [key: string]: number[] } = {
   all: [],
   weapon: [1],
@@ -34,18 +19,7 @@ const categoriesMap: { [key: string]: number[] } = {
 const SearchPage = (props: Props) => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
-  const [cities, setCities] = useState<City[]>([
-    {
-      id: 1,
-      name: "",
-      imageUrl: "",
-      shortDesc: "",
-      longDesc: "",
-      contribution: "",
-      categories: [1],
-      coordinates: [1, 1],
-    },
-  ]);
+  const [cities, setCities] = useState<City[]>([]);
 
   const getCities = async () => {
     await getAllCitiesApi()
@@ -60,9 +34,9 @@ const SearchPage = (props: Props) => {
   };
 
   useEffect(() => {
-    setCities(data);
-    // getCities();
-  }, []);
+    getCities();
+    console.log(cities);
+  }, [cities]);
 
   const filteredData = cities.filter((city) => {
     if (activeCategory !== "all") {
@@ -72,7 +46,7 @@ const SearchPage = (props: Props) => {
     }
     if (
       searchTerm &&
-      !city.name.toLowerCase().includes(searchTerm.toLowerCase())
+      !city.names[0].toLowerCase().includes(searchTerm.toLowerCase())
     )
       return false;
 
@@ -114,7 +88,11 @@ const SearchPage = (props: Props) => {
           </div>
 
           <div id="citiesContainer" className="cities-grid">
-            <CitiesGrid data={filteredData} />
+            {cities.length != 0 ? (
+              <CitiesGrid data={filteredData} />
+            ) : (
+              <p>Города не найдены</p>
+            )}
           </div>
         </div>
       </main>

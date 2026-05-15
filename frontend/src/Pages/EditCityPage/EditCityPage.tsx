@@ -62,7 +62,7 @@ const EditCityPage: React.FC = () => {
 
   const [city, setCity] = useState<City>({
     id: 0,
-    name: "",
+    names: [],
     imageUrl: "",
     shortDesc: "",
     longDesc: "",
@@ -70,6 +70,18 @@ const EditCityPage: React.FC = () => {
     categories: [],
     coordinates: [55.751244, 37.618423],
   });
+
+  // Состояние для строки ввода названий (через запятую)
+  const [namesInput, setNamesInput] = useState("");
+
+  // Синхронизация namesInput с city.names при загрузке
+  useEffect(() => {
+    if (city.names && city.names.length) {
+      setNamesInput(city.names.join(", "));
+    } else {
+      setNamesInput("");
+    }
+  }, [city.names]);
 
   const categories: Category[] = [
     { id: 1, name: "Город-герой", icon: "⭐", color: "#ffd700" },
@@ -115,28 +127,28 @@ const EditCityPage: React.FC = () => {
     "image",
   ];
 
-  // useEffect(() => {
-  //   if (id) {
-  //     getCity();
-  //   }
-  // }, [id]);
+  useEffect(() => {
+    if (id) {
+      getCity();
+    }
+  }, [id]);
 
-  // const getCity = async () => {
-  //   try {
-  //     setLoading(true);
-  //     const res = await getCityByIdApi(Number(id));
-  //     if (res?.data) {
-  //       setCity(res.data);
-  //       if (res.data.coordinates) {
-  //         setMapCenter(res.data.coordinates);
-  //       }
-  //     }
-  //   } catch (e) {
-  //     console.log("No city found");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+  const getCity = async () => {
+    try {
+      setLoading(true);
+      const res = await getCityByIdApi(Number(id));
+      if (res?.data) {
+        setCity(res.data);
+        if (res.data.coordinates) {
+          setMapCenter(res.data.coordinates);
+        }
+      }
+    } catch (e) {
+      console.log("No city found");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleCategoryToggle = (categoryId: number) => {
     setCity((prev) => ({
@@ -167,9 +179,29 @@ const EditCityPage: React.FC = () => {
     setMapCenter(position);
   };
 
+  // Обработчик изменения поля ввода названий
+  const handleNamesInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const rawValue = e.target.value;
+    setNamesInput(rawValue);
+
+    // Разбиваем строку по запятым, обрезаем пробелы, убираем пустые
+    const namesArray = rawValue
+      .split(",")
+      .map((name) => name.trim())
+      .filter((name) => name !== "");
+
+    // Обновляем city.names (если массив пуст, оставляем [""] для валидации)
+    setCity((prev) => ({
+      ...prev,
+      names: namesArray.length ? namesArray : [""],
+    }));
+  };
+
   const handleSave = async () => {
-    if (!city.name.trim()) {
-      alert("Введите название города");
+    // Валидация: проверяем, что есть хотя бы одно непустое название
+    const validNames = city.names.filter((name) => name.trim() !== "");
+    if (validNames.length === 0) {
+      alert("Введите хотя бы одно название города");
       return;
     }
     if (!city.shortDesc.trim()) {
@@ -194,7 +226,7 @@ const EditCityPage: React.FC = () => {
     try {
       await updateCityApi(
         Number(id),
-        city.name,
+        city.names,
         city.imageUrl,
         city.shortDesc,
         city.longDesc,
@@ -223,6 +255,12 @@ const EditCityPage: React.FC = () => {
       setDeleting(false);
     }
   };
+
+  // Первое название для отображения в модалке и alt
+  const mainCityName =
+    city.names.length > 0 && city.names[0] !== ""
+      ? city.names[0]
+      : "этот город";
 
   if (loading) {
     return (
@@ -300,19 +338,30 @@ const EditCityPage: React.FC = () => {
             <div className="form-section">
               <label className="form-label">
                 <span className="label-icon">🏙️</span>
-                Название города
+                Названия города
                 <span className="required">*</span>
               </label>
               <input
                 type="text"
                 className="form-input"
-                value={city.name}
-                onChange={(e) => setCity({ ...city, name: e.target.value })}
-                placeholder="Введите название города"
+                value={namesInput}
+                onChange={handleNamesInputChange}
+                placeholder="Введите названия через запятую (например, Челябинск, Нижний Тагил, Иваново)"
               />
               <p className="form-hint">
-                Например: Челябинск, Нижний Тагил, Иваново
+                Можно указать несколько названий (исторические, народные) через
+                запятую
               </p>
+              {city.names.length > 0 && city.names[0] !== "" && (
+                <div className="names-preview">
+                  <span className="preview-badge">Будет сохранено:</span>
+                  {city.names.map((name, idx) => (
+                    <span key={idx} className="name-tag">
+                      {name}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="form-section">
@@ -466,7 +515,7 @@ const EditCityPage: React.FC = () => {
                 {city.imageUrl ? (
                   <img
                     src={city.imageUrl}
-                    alt={city.name}
+                    alt={mainCityName}
                     onError={(e) => {
                       (e.target as HTMLImageElement).style.display = "none";
                       (e.target as HTMLImageElement).parentElement!.innerHTML =
@@ -589,8 +638,8 @@ const EditCityPage: React.FC = () => {
             <div className="modal-icon">⚠️</div>
             <h3>Удаление города</h3>
             <p>
-              Вы уверены, что хотите удалить <strong>{city.name}</strong>? Это
-              действие нельзя отменить.
+              Вы уверены, что хотите удалить <strong>{mainCityName}</strong>?
+              Это действие нельзя отменить.
             </p>
             <div className="modal-actions">
               <button

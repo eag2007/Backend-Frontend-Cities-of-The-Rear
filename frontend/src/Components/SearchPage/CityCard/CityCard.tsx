@@ -53,7 +53,7 @@ const CityCard = ({ city, onUpdated }: Props) => {
       <div
         className="city-card-image"
         style={{
-          backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(${city.imageUrl});`,
+          backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(${city.imageUrl})`,
         }}
       ></div>
       {isLoggedIn() && (
@@ -67,7 +67,7 @@ const CityCard = ({ city, onUpdated }: Props) => {
         </div>
       )}
       <div className="city-card-info">
-        <div className="city-card-name">{city.name}</div>
+        <div className="city-card-name">{city.names[0]}</div>
         <div className="city-card-desc">
           {city.shortDesc.substring(0, 100)}
           {city.shortDesc.length > 100 ? "..." : ""}

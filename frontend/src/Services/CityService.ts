@@ -2,6 +2,8 @@ import axios from "axios";
 import { handleError } from "../Helpers/ErrorHandler";
 import { api } from "./api";
 import { City, CityPost } from "../Models/City";
+import { UserProfileToken } from "../Models/User";
+import { useAuth } from "../Context/useAuth";
 
 export const getAllCitiesApi = async () => {
   try {
@@ -24,24 +26,29 @@ export const getCityByIdApi = async (id: number | undefined) => {
 };
 
 export const postCityApi = async (
-  name: string,
+  names: string[],
   imageUrl: string,
   shortDesc: string,
   longDesc: string,
   contribution: string,
   categories: number[],
-  coordinates: [number,number]
+  coordinates: [number,number],
+  token: string | null
 ) => {
   try {
     const result = await axios.post<CityPost>(api + `cities`, {
-      name: name,
-  imageUrl: imageUrl,
-  shortDesc: shortDesc,
-  longDesc: longDesc,
-  contribution: contribution,
-  categories: categories,
-  coordinates: coordinates
-    });
+      names: names,
+      imageUrl: imageUrl,
+      shortDesc: shortDesc,
+      longDesc: longDesc,
+      contribution: contribution,
+      categories: categories,
+      coordinates: coordinates
+    },{
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
     return result;
   } catch (error) {
     handleError(error);
@@ -59,7 +66,7 @@ export const deleteCityByIdApi = async (id: number) => {
 
 export const updateCityApi = async (
     id: number,
-  name: string,
+  names: string[],
   imageUrl: string,
   shortDesc: string,
   longDesc: string,
@@ -69,7 +76,7 @@ export const updateCityApi = async (
 ) => {
   try {
     const result = await axios.put<CityPost>(api + `cities/${id}`, {
-      name: name,
+      names: names,
   imageUrl: imageUrl,
   shortDesc: shortDesc,
   longDesc: longDesc,
