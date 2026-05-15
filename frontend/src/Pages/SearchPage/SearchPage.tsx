@@ -36,7 +36,7 @@ const SearchPage = (props: Props) => {
   useEffect(() => {
     getCities();
     console.log(cities);
-  }, [cities]);
+  }, []);
 
   const filteredData = cities.filter((city) => {
     if (activeCategory !== "all") {
