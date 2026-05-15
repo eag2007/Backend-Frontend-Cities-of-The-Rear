@@ -13,7 +13,6 @@ from routes.category_routes import category_bp
 
 
 app = Flask(__name__)
-
 app.config.from_object(Config)
 
 CORS(app)
