@@ -1,0 +1,60 @@
+.filters-panel {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    border-left: 8px solid #b22222;
+}
+
+.search-box {
+    flex: 2;
+    min-width: 250px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 20px;
+    border: 2px solid #ddd;
+    border-radius: 40px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.search-box input:focus {
+    border-color: #b22222;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(178, 34, 34, 0.2);
+}
+
+.category-filters {
+    flex: 3;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: none;
+    background: #eee;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.filter-btn:hover {
+    background: #d4c9b8;
+}
+
+.filter-btn.active {
+    background: #b22222;
+    color: white;
+}

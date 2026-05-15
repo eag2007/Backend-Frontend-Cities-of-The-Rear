@@ -1,0 +1,13 @@
+.cities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.no-results {
+    text-align: center;
+    grid-column: 1 / -1;
+    padding: 60px;
+    font-size: 1.4rem;
+    color: #7a6a5a;
+}

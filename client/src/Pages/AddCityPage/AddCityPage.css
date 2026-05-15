@@ -1,0 +1,346 @@
+.add-city-page {
+  min-height: 100vh;
+  background: #f8f6f0;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #6b5e4a;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.back-btn:hover {
+  background: #f4f0e5;
+  color: #b22222;
+}
+
+.add-header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c2c2c;
+  margin: 0;
+  flex: 1;
+}
+
+.save-btn {
+  padding: 10px 28px;
+  background: #b22222;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.save-btn:hover:not(:disabled) {
+  background: #8b0000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(178, 34, 34, 0.3);
+}
+
+.save-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.add-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.add-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+@media (max-width: 1024px) {
+  .add-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-section {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.form-section:last-child {
+  margin-bottom: 0;
+}
+
+.form-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #2c2c2c;
+  margin-bottom: 12px;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e8e2d4;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #b22222;
+  box-shadow: 0 0 0 3px rgba(178, 34, 34, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.categories-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.category-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 2px solid #e8e2d4;
+  border-radius: 40px;
+  background: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #4a3e2e;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.category-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category-chip.active {
+  background: #fff5f0;
+  border-color: #b22222;
+  color: #b22222;
+}
+
+.preview-section {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.quill-wrapper {
+  margin-top: 8px;
+}
+
+.city-quill-editor .ql-toolbar {
+  border: 2px solid #e8e2d4;
+  border-radius: 12px 12px 0 0;
+}
+
+.city-quill-editor .ql-container {
+  border: 2px solid #e8e2d4;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  min-height: 300px;
+}
+
+.city-quill-editor .ql-editor {
+  min-height: 280px;
+  line-height: 1.6;
+}
+
+/* Координаты */
+.coordinates-inputs {
+  display: flex;
+  gap: 15px;
+  align-items: flex-end;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.coord-input {
+  flex: 1;
+  min-width: 120px;
+}
+
+.coord-input label {
+  display: block;
+  font-size: 0.75rem;
+  color: #666;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.geocode-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #f0e8dc;
+  border: 1px solid #d4c8b5;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #5a4a2e;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.geocode-btn:hover {
+  background: #e8ddcd;
+  border-color: #b22222;
+  color: #b22222;
+}
+
+/* Карта */
+.map-selector {
+  margin-top: 10px;
+}
+
+.map-selector .form-hint {
+  margin-top: 8px;
+  font-size: 0.75rem;
+  color: #888;
+}
+
+/* Превью изображения */
+.image-preview {
+  background: #f5f0e6;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e0d6c5;
+}
+
+.image-preview img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-height: 250px;
+}
+
+.image-placeholder {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+}
+
+.image-placeholder svg {
+  margin-bottom: 10px;
+  opacity: 0.5;
+}
+
+.image-placeholder p {
+  margin: 5px 0;
+  font-size: 0.875rem;
+}
+
+.image-placeholder span {
+  font-size: 0.75rem;
+  color: #bbb;
+}
+
+/* Выбранные категории */
+.selected-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.selected-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid;
+  font-size: 0.875rem;
+  background: white;
+}
+
+/* Кнопка сохранения со спиннером */
+.save-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: #b22222;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.save-btn:hover:not(:disabled) {
+  background: #8b1a1a;
+}
+
+.save-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .coordinates-inputs {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .geocode-btn {
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .coord-input {
+    width: 100%;
+  }
+}

@@ -1,0 +1,55 @@
+.city-card-map-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.city-card-map {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 280px;
+  cursor: pointer;
+}
+
+.city-card-map:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.city-card-map-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.city-card-map-content {
+  padding: 15px;
+}
+
+.city-card-map-title {
+  margin: 0 0 5px 0;
+  font-size: 1.25rem;
+  color: #b22222;
+}
+
+.city-card-map-year {
+  display: inline-block;
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.city-card-map-description {
+  font-size: 0.875rem;
+  color: #444;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.city-card-map-link-text {
+  font-size: 0.875rem;
+  color: #b22222;
+  font-weight: bold;
+}

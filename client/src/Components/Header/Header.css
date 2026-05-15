@@ -1,0 +1,60 @@
+.main-header {
+    background: #2c2c2c;
+    border-bottom: 5px solid #b22222;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    color: #fff;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.logo span {
+    font-size: 0.8rem;
+    color: #b22222;
+    display: block;
+}
+
+#exitLink {
+    font-size: 1rem;
+    background-color: #b22222;
+    border-radius: 10%;
+    padding: 0.5rem;
+}
+
+#exitLink:hover {
+    color: #fff;
+}
+
+nav ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+nav ul li a {
+    color: #ddd;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+    padding: 5px 0;
+}
+
+nav ul li a:hover {
+    color: #b22222;
+}

@@ -1,0 +1,120 @@
+.city-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.city-card:hover {
+    transform: translateY(-8px);
+}
+
+.city-card-image {
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.city-card-tag {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(178, 34, 34, 0.9);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.city-card-info {
+    padding: 20px;
+}
+
+.city-card-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #b22222;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.city-card-desc {
+    color: #4a4a4a;
+    margin: 15px 0;
+    line-height: 1.5;
+}
+
+.city-card-contribution-badge {
+    background: #d4c9b8;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+}
+
+.city-card-category {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.city-card-category-chip {
+    background: #f4f0e5;
+    padding: 4px 12px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #5a4a3a;
+    border: 1px solid #c0b09a;
+}
+
+.city-card-action-buttons {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.city-card-action-buttons button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.city-card-edit-btn {
+  color: #4a90e2;
+  border: 1px solid rgba(74, 144, 226, 0.3);
+}
+
+.city-card-edit-btn:hover {
+  background: #4a90e2;
+  color: white;
+  transform: scale(1.05);
+}
+
+.city-card-delete-btn {
+  color: #e24a4a;
+  border: 1px solid rgba(226, 74, 74, 0.3);
+}
+
+.city-card-delete-btn:hover {
+  background: #e24a4a;
+  color: white;
+  transform: scale(1.05);
+}

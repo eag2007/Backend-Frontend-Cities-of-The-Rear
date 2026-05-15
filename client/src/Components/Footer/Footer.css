@@ -1,0 +1,12 @@
+.main-footer {
+    background: #2c2c2c;
+    color: #ccc;
+    text-align: center;
+    padding: 30px;
+    margin-top: 60px;
+    border-top: 5px solid #b22222;
+}
+
+.footer-container p {
+    margin: 5px 0;
+}

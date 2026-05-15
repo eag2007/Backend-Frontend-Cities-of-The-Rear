@@ -1,0 +1,333 @@
+.cities-map-page {
+  padding: 40px 0;
+  background: #f5f0e6;
+  min-height: 100vh;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #b22222;
+  font-weight: 600;
+}
+
+.page-description {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  color: #666;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Секции статистики */
+.stats-section {
+  margin-bottom: 40px;
+}
+
+.stats-title {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+  color: #4a3b2a;
+  text-align: center;
+}
+
+.stats-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.stat-card-mini {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  text-align: center;
+  min-width: 140px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.stat-card-mini:hover {
+  transform: translateY(-3px);
+}
+
+.stat-card-mini .stat-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.stat-card-mini .stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.stat-card-mini .stat-label {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.stat-card-mini.hero .stat-number { color: #ffd700; }
+.stat-card-mini.military .stat-number { color: #b22222; }
+.stat-card-mini.labor .stat-number { color: #2c5282; }
+.stat-card-mini.weapon .stat-number { color: #dc2626; }
+.stat-card-mini.technic .stat-number { color: #f59e0b; }
+.stat-card-mini.uniform .stat-number { color: #8b5cf6; }
+.stat-card-mini.food .stat-number { color: #10b981; }
+
+/* Фильтры */
+.filters-section {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.filter-group {
+  margin-bottom: 20px;
+}
+
+.filter-group h4 {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 10px 20px;
+  border: 2px solid #e0d6c5;
+  background: white;
+  color: #5a4a2e;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.filter-btn:hover {
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  background: #b22222;
+  border-color: #b22222;
+  color: white;
+}
+
+.filter-btn.hero.active { background: #ffd700; border-color: #ffd700; color: #b22222; }
+.filter-btn.military.active { background: #b22222; border-color: #b22222; }
+.filter-btn.labor.active { background: #2c5282; border-color: #2c5282; }
+.filter-btn.weapon.active { background: #dc2626; border-color: #dc2626; }
+.filter-btn.technic.active { background: #f59e0b; border-color: #f59e0b; }
+.filter-btn.uniform.active { background: #8b5cf6; border-color: #8b5cf6; }
+.filter-btn.food.active { background: #10b981; border-color: #10b981; }
+
+.clear-filter {
+  display: block;
+  margin: 15px auto 0;
+  padding: 8px 20px;
+  background: #f0e8dc;
+  border: none;
+  border-radius: 20px;
+  color: #b22222;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.clear-filter:hover {
+  background: #e8ddcd;
+  transform: translateY(-1px);
+}
+
+/* Обертка карты */
+.map-wrapper {
+  margin: 30px 0;
+}
+
+/* Информация о выбранном городе */
+.selected-city-info {
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  margin-top: 30px;
+  padding: 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.close-info {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.2s;
+  padding: 5px;
+  line-height: 1;
+}
+
+.close-info:hover {
+  color: #b22222;
+}
+
+.city-info-content {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.city-info-image {
+  width: 250px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.city-info-text {
+  flex: 1;
+  min-width: 250px;
+}
+
+.city-info-text h3 {
+  font-size: 1.75rem;
+  color: #b22222;
+  margin-bottom: 15px;
+}
+
+.city-info-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.city-info-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid;
+  font-size: 0.875rem;
+  background: white;
+}
+
+.city-info-contribution {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.city-info-desc {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.city-info-link {
+  display: inline-block;
+  padding: 10px 24px;
+  background: #b22222;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+
+.city-info-link:hover {
+  background: #8b1a1a;
+}
+
+/* Загрузка */
+.loading-spinner {
+  text-align: center;
+  padding: 100px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #b22222;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .cities-map-page {
+    padding: 20px 0;
+  }
+  
+  .page-title {
+    font-size: 1.5rem;
+  }
+  
+  .stat-card-mini {
+    padding: 15px 20px;
+    min-width: 100px;
+  }
+  
+  .stat-card-mini .stat-number {
+    font-size: 1.5rem;
+  }
+  
+  .filter-btn {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+  
+  .city-info-content {
+    flex-direction: column;
+  }
+  
+  .city-info-image {
+    width: 100%;
+    height: 180px;
+  }
+  
+  .city-info-text h3 {
+    font-size: 1.25rem;
+  }
+}
