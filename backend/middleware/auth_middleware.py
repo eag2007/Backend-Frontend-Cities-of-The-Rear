@@ -10,7 +10,8 @@ def admin_required(superadmin_only=False):
         def decorator(*args, **kwargs):
             try:
                 verify_jwt_in_request()
-            except Exception:
+            except Exception as e:
+                print("JWT ERROR:", type(e), e)
                 return jsonify({'message': 'Unauthorized'}), 401
 
             user_id = get_jwt_identity()
