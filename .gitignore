@@ -33,7 +33,6 @@ package-lock.json  # если хочешь игнорить, хотя обычн
 .pnpm-store/
 
 # Environment files
-.env
 .env.local
 .env.*.local
 
