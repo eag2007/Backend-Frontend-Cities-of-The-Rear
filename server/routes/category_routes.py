@@ -1,4 +1,6 @@
 from flask import Blueprint, jsonify, request
+
+from middleware.auth_middleware import admin_required
 from models import db
 from models.category import Category
 
@@ -19,6 +21,7 @@ def get_categories():
 
 
 @category_bp.route('/categories', methods=['POST'])
+@admin_required()
 def create_category():
     data = request.json
 
@@ -37,6 +40,7 @@ def create_category():
 
 
 @category_bp.route('/categories/<int:id>', methods=['DELETE'])
+@admin_required()
 def delete_category(id):
     category = Category.query.get(id)
 

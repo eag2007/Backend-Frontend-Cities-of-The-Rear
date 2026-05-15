@@ -5,12 +5,12 @@ from flask_jwt_extended import JWTManager
 from config import Config
 
 from models import db
+from seed import create_superadmin
 
 from routes.auth_routes import auth_bp
 from routes.city_routes import city_bp
 from routes.user_routes import user_bp
 from routes.category_routes import category_bp
-
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -24,6 +24,7 @@ db.init_app(app)
 
 with app.app_context():
     db.create_all()
+    create_superadmin()
 
 
 app.register_blueprint(auth_bp)

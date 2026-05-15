@@ -142,3 +142,53 @@ def delete_city(id):
     return jsonify({
         'message': 'City deleted'
     })
+
+
+@city_bp.route('/cities/<int:city_id>/categories', methods=['POST'])
+@admin_required()
+def add_categories_to_city(city_id):
+    data = request.json
+
+    category_ids = data.get("category_ids", [])
+
+    city = City.query.get(city_id)
+
+    if not city:
+        return jsonify({"message": "City not found"}), 404
+
+    if not category_ids:
+        return jsonify({"message": "No categories provided"}), 400
+
+    for cat_id in category_ids:
+        category = Category.query.get(cat_id)
+        if category and category not in city.categories:
+            city.categories.append(category)
+
+    db.session.commit()
+
+    return jsonify({
+        "message": "Categories added to city",
+        "city_id": city.id,
+        "categories": [c.id for c in city.categories]
+    })
+
+
+@city_bp.route('/cities/<int:city_id>/categories/<int:cat_id>', methods=['DELETE'])
+@admin_required()
+def remove_category_from_city(city_id, cat_id):
+
+    city = City.query.get(city_id)
+    if not city:
+        return jsonify({"message": "City not found"}), 404
+
+    category = Category.query.get(cat_id)
+    if not category:
+        return jsonify({"message": "Category not found"}), 404
+
+    if category in city.categories:
+        city.categories.remove(category)
+        db.session.commit()
+
+    return jsonify({
+        "message": "Category removed from city"
+    })
