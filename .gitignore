@@ -42,9 +42,14 @@ logs/
 *.log
 
 # Database
-*.db
-*.sqlite
+.sqlite
 *.sqlite3
+*.db-journal
+database/sqlite/
+databases/
+*.sql
+*.sqlite-shm
+*.sqlite-wal
 
 # Uploads / media
 media/
