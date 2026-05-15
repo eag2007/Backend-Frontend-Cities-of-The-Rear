@@ -1,15 +1,16 @@
 .filters-panel {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    padding: 24px 28px;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
     margin-bottom: 40px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     align-items: center;
     justify-content: space-between;
-    border-left: 8px solid #b22222;
+    border-left: none;
+    border: 1px solid #f0f0f0;
 }
 
 .search-box {
@@ -20,16 +21,18 @@
 .search-box input {
     width: 100%;
     padding: 12px 20px;
-    border: 2px solid #ddd;
+    border: 1px solid #f0f0f0;
     border-radius: 40px;
-    font-size: 1rem;
-    transition: all 0.3s;
+    font-size: 0.95rem;
+    font-weight: 400;
+    transition: all 0.2s ease;
+    background: #fafafa;
 }
 
 .search-box input:focus {
-    border-color: #b22222;
+    border-color: #1a1a1a;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(178, 34, 34, 0.2);
+    background: #ffffff;
 }
 
 .category-filters {
@@ -41,20 +44,23 @@
 }
 
 .filter-btn {
-    padding: 10px 20px;
-    border: none;
-    background: #eee;
-    border-radius: 40px;
+    padding: 8px 20px;
+    border: 1px solid #f0f0f0;
+    background: #fafafa;
+    border-radius: 30px;
     cursor: pointer;
-    font-weight: 600;
-    transition: all 0.2s;
+    font-weight: 400;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    color: #1a1a1a;
 }
 
 .filter-btn:hover {
-    background: #d4c9b8;
+    background: #f0f0f0;
 }
 
 .filter-btn.active {
-    background: #b22222;
+    background: #1a1a1a;
     color: white;
+    border-color: #1a1a1a;
 }

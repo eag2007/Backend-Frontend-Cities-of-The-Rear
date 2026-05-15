@@ -1,13 +1,12 @@
 .admin-dashboard {
   min-height: 100vh;
-  background: #f8f6f0;
+  background: #ffffff;
 }
 
-/* ========== ЗАГОЛОВОК ========== */
 .dashboard-header {
-  background: white;
-  border-bottom: 1px solid #e8e2d4;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  background: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -22,42 +21,44 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
 .header-left h1 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #2c2c2c;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #1a1a1a;
   margin: 0 0 4px 0;
+  letter-spacing: -0.3px;
 }
 
 .dashboard-subtitle {
-  color: #9b8e7a;
+  color: #999;
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 400;
 }
 
-/* Профиль админа */
 .admin-profile {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: #f8f6f0;
-  padding: 8px 16px 8px 12px;
-  border-radius: 60px;
-  border: 1px solid #e8e2d4;
+  background: #fafafa;
+  padding: 6px 16px 6px 10px;
+  border-radius: 40px;
+  border: 1px solid #f0f0f0;
 }
 
 .admin-avatar {
-  width: 44px;
-  height: 44px;
-  background: linear-gradient(135deg, #b22222 0%, #8b0000 100%);
+  width: 40px;
+  height: 40px;
+  background: #1a1a1a;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 500;
   color: white;
 }
 
@@ -68,29 +69,27 @@
 }
 
 .admin-name {
-  font-weight: 600;
-  color: #2c2c2c;
-  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  font-size: 0.85rem;
 }
 
 .admin-role-badge {
-  font-size: 0.7rem;
-  color: #b22222;
-  background: #fff0e8;
+  font-size: 0.65rem;
+  color: #666;
+  background: #f8f8f8;
   padding: 2px 8px;
   border-radius: 20px;
   display: inline-block;
   width: fit-content;
 }
 
-/* ========== ОСНОВНОЙ КОНТЕЙНЕР ========== */
 .dashboard-container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 32px 24px;
 }
 
-/* ========== СТАТИСТИКА ========== */
 .admin-stats-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -106,36 +105,36 @@
 
 @media (max-width: 480px) {
   .admin-stats-grid {
-    grid-template-columns: 2fr;
+    grid-template-columns: 1fr;
   }
 }
 
 .admin-stat-card {
-  background: white;
+  background: #ffffff;
   border-radius: 20px;
   padding: 20px;
   display: flex;
   align-items: center;
-  gap: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  transition: all 0.3s;
-  border: 1px solid #f0eae0;
+  gap: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease;
+  border: 1px solid #f0f0f0;
 }
 
 .admin-stat-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
 }
 
 .admin-stat-icon {
-  width: 56px;
-  height: 56px;
-  background: linear-gradient(135deg, #fef5ed 0%, #fff5ed 100%);
+  width: 50px;
+  height: 50px;
+  background: #fafafa;
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 
 .admin-stat-info {
@@ -144,19 +143,18 @@
 }
 
 .admin-stat-value {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #b22222;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #1a1a1a;
   line-height: 1;
 }
 
 .admin-stat-label {
-  font-size: 0.85rem;
-  color: #9b8e7a;
+  font-size: 0.75rem;
+  color: #999;
   margin-top: 4px;
 }
 
-/* ========== КНОПКИ ДЕЙСТВИЙ ========== */
 .actions-bar {
   display: flex;
   gap: 16px;
@@ -168,82 +166,80 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 24px;
+  padding: 10px 24px;
   border: none;
-  border-radius: 12px;
-  font-size: 0.95rem;
-  font-weight: 600;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 .action-btn.primary {
-  background: #b22222;
+  background: #1a1a1a;
   color: white;
-  box-shadow: 0 2px 8px rgba(178, 34, 34, 0.2);
 }
 
 .action-btn.primary:hover {
-  background: #8b0000;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(178, 34, 34, 0.3);
+  background: #333333;
+  transform: translateY(-1px);
 }
 
 .action-btn.secondary {
-  background: white;
-  color: #b22222;
-  border: 2px solid #b22222;
+  background: #ffffff;
+  color: #1a1a1a;
+  border: 1px solid #f0f0f0;
 }
 
 .action-btn.secondary:hover {
-  background: #fff5f0;
-  transform: translateY(-2px);
+  background: #fafafa;
+  transform: translateY(-1px);
 }
 
-/* ========== СЕКЦИИ ========== */
 .dashboard-section {
-  background: white;
-  border-radius: 24px;
+  background: #ffffff;
+  border-radius: 20px;
   margin-bottom: 32px;
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  border: 1px solid #f0f0f0;
 }
 
 .section-header {
   padding: 20px 24px;
-  border-bottom: 1px solid #f0eae0;
+  border-bottom: 1px solid #f0f0f0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 12px;
-  background: #fefefc;
+  background: #ffffff;
 }
 
 .section-header h2 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #2c2c2c;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #1a1a1a;
   margin: 0;
   display: flex;
   align-items: center;
   gap: 10px;
+  letter-spacing: -0.2px;
 }
 
 .section-icon {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 .section-count {
-  background: #f4f0e5;
-  padding: 4px 12px;
-  border-radius: 40px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: #6b5e4a;
+  background: #f8f8f8;
+  padding: 4px 10px;
+  border-radius: 30px;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #666;
 }
 
-/* ========== ТАБЛИЦА ГОРОДОВ ========== */
 .cities-table-wrapper,
 .admins-table-wrapper {
   overflow-x: auto;
@@ -259,29 +255,28 @@
 .admins-table th {
   text-align: left;
   padding: 16px 20px;
-  background: #faf8f4;
-  font-weight: 600;
-  font-size: 0.85rem;
-  color: #6b5e4a;
-  border-bottom: 1px solid #e8e2d4;
+  background: #fafafa;
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: #666;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .cities-table td,
 .admins-table td {
   padding: 16px 20px;
-  border-bottom: 1px solid #f0eae0;
-  font-size: 0.9rem;
-  color: #4a3e2e;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.85rem;
+  color: #1a1a1a;
 }
 
 .cities-table tr:hover,
 .admins-table tr:hover {
-  background: #fefbf7;
+  background: #fafafa;
 }
 
-/* Города */
 .city-name-cell {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .city-name-wrapper {
@@ -291,21 +286,22 @@
 }
 
 .city-mini-image {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 8px;
   object-fit: cover;
-  background: #f0eae0;
+  background: #f8f8f8;
 }
 
 .city-name-text {
-  color: #b22222;
-  font-weight: 600;
+  color: #1a1a1a;
+  font-weight: 500;
 }
 
 .contribution-cell {
   max-width: 250px;
   line-height: 1.4;
+  color: #666;
 }
 
 .city-categories {
@@ -318,33 +314,35 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 4px 10px;
+  padding: 3px 10px;
   border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 0.7rem;
+  font-weight: 400;
+  background: #f8f8f8;
+  color: #666;
+  border: 1px solid #f0f0f0;
 }
 
 .category-badge.weapon {
-  background: #fee2e2;
-  color: #dc2626;
+  background: #fef2f2;
+  color: #1a1a1a;
 }
 
 .category-badge.tech {
-  background: #fef3c7;
-  color: #f59e0b;
+  background: #fffbeb;
+  color: #1a1a1a;
 }
 
 .category-badge.food {
-  background: #d1fae5;
-  color: #10b981;
+  background: #ecfdf5;
+  color: #1a1a1a;
 }
 
 .category-badge.uniform {
-  background: #e0e7ff;
-  color: #6366f1;
+  background: #eff6ff;
+  color: #1a1a1a;
 }
 
-/* ========== ТАБЛИЦА АДМИНОВ ========== */
 .admin-name-cell {
   display: flex;
   align-items: center;
@@ -353,37 +351,36 @@
 }
 
 .current-badge {
-  background: #b22222;
+  background: #1a1a1a;
   color: white;
   padding: 2px 8px;
   border-radius: 20px;
-  font-size: 0.7rem;
-  font-weight: 500;
+  font-size: 0.65rem;
+  font-weight: 400;
 }
 
 .current-user-row {
-  background: #fef9e8;
+  background: #fafafa;
 }
 
 .role-badge {
   display: inline-block;
-  padding: 4px 12px;
+  padding: 3px 10px;
   border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 0.7rem;
+  font-weight: 400;
 }
 
 .role-badge.super_admin {
-  background: #fef3c7;
-  color: #d97706;
+  background: #f8f8f8;
+  color: #666;
 }
 
 .role-badge.admin {
-  background: #e0e7ff;
-  color: #4f46e5;
+  background: #f8f8f8;
+  color: #666;
 }
 
-/* ========== КНОПКИ ДЕЙСТВИЙ В ТАБЛИЦАХ ========== */
 .action-buttons {
   display: flex;
   gap: 8px;
@@ -391,36 +388,34 @@
 
 .edit-btn,
 .delete-btn {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.2s;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
 
 .edit-btn {
-  background: #f4f0e5;
-  color: #6b5e4a;
+  background: #f8f8f8;
+  color: #666;
 }
 
 .edit-btn:hover {
-  background: #e8e2d4;
-  transform: scale(1.05);
+  background: #f0f0f0;
 }
 
 .delete-btn {
-  background: #fee2e2;
-  color: #dc2626;
+  background: #fef2f2;
+  color: #1a1a1a;
 }
 
 .delete-btn:hover:not(:disabled) {
-  background: #fecaca;
-  transform: scale(1.05);
+  background: #fee2e2;
 }
 
 .delete-btn:disabled {
@@ -428,14 +423,13 @@
   cursor: not-allowed;
 }
 
-/* ========== МОДАЛЬНОЕ ОКНО ========== */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
@@ -445,12 +439,13 @@
 }
 
 .modal-content {
-  background: white;
-  border-radius: 28px;
+  background: #ffffff;
+  border-radius: 24px;
   width: 90%;
   max-width: 480px;
   animation: slideUp 0.3s ease;
   overflow: hidden;
+  border: 1px solid #f0f0f0;
 }
 
 .modal-header {
@@ -458,18 +453,18 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  border-bottom: 1px solid #f0eae0;
+  border-bottom: 1px solid #f0f0f0;
   position: relative;
 }
 
 .modal-icon {
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 
 .modal-header h3 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #2c2c2c;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #1a1a1a;
   margin: 0;
   flex: 1;
 }
@@ -478,23 +473,22 @@
   width: 32px;
   height: 32px;
   border: none;
-  background: #f4f0e5;
+  background: #f8f8f8;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 1.2rem;
-  color: #9b8e7a;
-  transition: all 0.2s;
+  font-size: 1rem;
+  color: #999;
+  transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .modal-close:hover {
-  background: #e8e2d4;
-  color: #b22222;
+  background: #f0f0f0;
+  color: #1a1a1a;
 }
 
-/* Форма добавления админа */
 .add-admin-form {
   padding: 24px;
   display: flex;
@@ -514,26 +508,27 @@
   gap: 6px;
   font-weight: 500;
   font-size: 0.85rem;
-  color: #4a3e2e;
+  color: #1a1a1a;
 }
 
 .label-icon {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .add-admin-form .form-group input {
   padding: 12px 16px;
-  border: 2px solid #e8e2d4;
+  border: 1px solid #f0f0f0;
   border-radius: 12px;
-  font-size: 0.95rem;
-  transition: all 0.2s;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
   font-family: inherit;
+  background: #fafafa;
 }
 
 .add-admin-form .form-group input:focus {
   outline: none;
-  border-color: #b22222;
-  box-shadow: 0 0 0 3px rgba(178, 34, 34, 0.1);
+  border-color: #1a1a1a;
+  background: #ffffff;
 }
 
 .modal-actions {
@@ -545,44 +540,43 @@
 .btn-cancel {
   flex: 1;
   padding: 12px;
-  background: #f4f0e5;
-  border: none;
+  background: #f8f8f8;
+  border: 1px solid #f0f0f0;
   border-radius: 12px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
-  color: #6b5e4a;
+  color: #1a1a1a;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 .btn-cancel:hover {
-  background: #e8e2d4;
+  background: #f0f0f0;
 }
 
 .btn-submit {
   flex: 1;
   padding: 12px;
-  background: #b22222;
+  background: #1a1a1a;
   border: none;
   border-radius: 12px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 500;
   color: white;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 .btn-submit:hover:not(:disabled) {
-  background: #8b0000;
+  background: #333333;
   transform: translateY(-1px);
 }
 
 .btn-submit:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
-/* ========== ЗАГРУЗКА ========== */
 .admin-dashboard-loading {
   min-height: 100vh;
   display: flex;
@@ -590,24 +584,23 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-  background: #f8f6f0;
+  background: #ffffff;
 }
 
 .loading-spinner {
-  width: 48px;
-  height: 48px;
-  border: 3px solid #e8e2d4;
-  border-top-color: #b22222;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #f0f0f0;
+  border-top-color: #1a1a1a;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
 
 .admin-dashboard-loading p {
-  color: #9b8e7a;
-  font-size: 0.95rem;
+  color: #999;
+  font-size: 0.85rem;
 }
 
-/* ========== АНИМАЦИИ ========== */
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -634,51 +627,50 @@
   }
 }
 
-/* ========== АДАПТИВНОСТЬ ========== */
 @media (max-width: 768px) {
   .dashboard-header-content {
     flex-direction: column;
     align-items: stretch;
     padding: 16px;
   }
-  
+
   .admin-profile {
     align-self: flex-start;
   }
-  
+
   .dashboard-container {
     padding: 20px 16px;
   }
-  
+
   .section-header {
     padding: 16px;
   }
-  
+
   .cities-table td,
   .admins-table td,
   .cities-table th,
   .admins-table th {
     padding: 12px;
   }
-  
+
   .city-categories {
     flex-direction: column;
     gap: 4px;
   }
-  
+
   .category-badge {
     width: fit-content;
   }
-  
+
   .modal-content {
     width: 95%;
     margin: 16px;
   }
-  
+
   .modal-header {
     padding: 20px;
   }
-  
+
   .add-admin-form {
     padding: 20px;
   }
@@ -686,7 +678,7 @@
 
 @media (max-width: 480px) {
   .header-left h1 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
   
   .action-btn {

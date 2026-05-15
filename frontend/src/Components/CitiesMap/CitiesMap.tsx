@@ -72,7 +72,6 @@ const CitiesMap = ({
   onCitySelect,
 }: CitiesMapProps) => {
   const [openPopupId, setOpenPopupId] = useState<number | null>(null);
-  const timeoutRef = useRef<NodeJS.Timeout>(null);
 
   const handleMarkerClick = (city: City) => {
     setOpenPopupId(city.id);
@@ -90,10 +89,6 @@ const CitiesMap = ({
       onCitySelect(city);
     }
   };
-
-  // useEffect(() => {
-  //   console.log(cities);
-  // }, []);
 
   return (
     <div className="cities-map-container">

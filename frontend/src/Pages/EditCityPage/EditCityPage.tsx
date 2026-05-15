@@ -247,7 +247,7 @@ const EditCityPage: React.FC = () => {
     setDeleting(true);
     try {
       await deleteCityByIdApi(Number(id));
-      navigate("/admin");
+      navigate("/");
     } catch (error) {
       console.log("Не удалось удалить город", error);
       alert("Произошла ошибка при удалении");
@@ -275,7 +275,7 @@ const EditCityPage: React.FC = () => {
     <div className="edit-city-page">
       <div className="edit-header">
         <div className="edit-header-content">
-          <button className="back-btn" onClick={() => navigate("/admin")}>
+          <button className="back-btn" onClick={() => navigate("/")}>
             <svg
               width="20"
               height="20"

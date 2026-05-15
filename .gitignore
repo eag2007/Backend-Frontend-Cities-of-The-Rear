@@ -41,6 +41,7 @@ logs/
 *.log
 
 # Database
+/database
 .sqlite
 *.sqlite3
 *.db-journal

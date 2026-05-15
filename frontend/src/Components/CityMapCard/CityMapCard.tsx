@@ -11,7 +11,7 @@ const CityMapCard = ({ city }: CityCardProps) => {
     <Link to={`/city/${city.id}`} className="city-card-map-link">
       <div className="city-card-map">
         <div className="city-card-map-content">
-          <h3 className="city-card-map-title">{city.name}</h3>
+          <h3 className="city-card-map-title">{city.names[0]}</h3>
           <p className="city-card-map-description">
             {city.shortDesc.substring(0, 100)}...
           </p>

@@ -1,6 +1,6 @@
 .add-city-page {
   min-height: 100vh;
-  background: #f8f6f0;
+  background: #ffffff;
 }
 
 .back-btn {
@@ -9,48 +9,51 @@
   gap: 8px;
   background: transparent;
   border: none;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #6b5e4a;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #666;
   cursor: pointer;
   padding: 8px 12px;
-  border-radius: 8px;
-  transition: all 0.2s;
+  border-radius: 30px;
+  transition: all 0.2s ease;
 }
 
 .back-btn:hover {
-  background: #f4f0e5;
-  color: #b22222;
+  background: #f8f8f8;
+  color: #1a1a1a;
 }
 
 .add-header h1 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #2c2c2c;
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: #1a1a1a;
   margin: 0;
   flex: 1;
+  letter-spacing: -0.3px;
 }
 
 .save-btn {
-  padding: 10px 28px;
-  background: #b22222;
+  padding: 8px 28px;
+  background: #1a1a1a;
   border: none;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 500;
   color: white;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .save-btn:hover:not(:disabled) {
-  background: #8b0000;
+  background: #333333;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(178, 34, 34, 0.3);
 }
 
 .save-btn:disabled {
-  opacity: 0.7;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
@@ -73,11 +76,12 @@
 }
 
 .form-section {
-  background: white;
+  background: #ffffff;
   border-radius: 20px;
   padding: 24px;
   margin-bottom: 24px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  border: 1px solid #f0f0f0;
 }
 
 .form-section:last-child {
@@ -86,9 +90,9 @@
 
 .form-label {
   display: block;
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: #2c2c2c;
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: #1a1a1a;
   margin-bottom: 12px;
 }
 
@@ -96,18 +100,19 @@
 .form-textarea {
   width: 100%;
   padding: 12px 16px;
-  border: 2px solid #e8e2d4;
+  border: 1px solid #f0f0f0;
   border-radius: 12px;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-family: inherit;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
+  background: #fafafa;
 }
 
 .form-input:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: #b22222;
-  box-shadow: 0 0 0 3px rgba(178, 34, 34, 0.1);
+  border-color: #1a1a1a;
+  background: #ffffff;
 }
 
 .form-textarea {
@@ -118,40 +123,41 @@
 .categories-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
 }
 
 .category-chip {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 16px;
-  border: 2px solid #e8e2d4;
-  border-radius: 40px;
-  background: white;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #4a3e2e;
+  padding: 6px 16px;
+  border: 1px solid #f0f0f0;
+  border-radius: 30px;
+  background: #fafafa;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #1a1a1a;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 .category-chip:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+  background: #f0f0f0;
 }
 
 .category-chip.active {
-  background: #fff5f0;
-  border-color: #b22222;
-  color: #b22222;
+  background: #1a1a1a;
+  border-color: #1a1a1a;
+  color: white;
 }
 
 .preview-section {
-  background: white;
+  background: #ffffff;
   border-radius: 20px;
   padding: 24px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  border: 1px solid #f0f0f0;
 }
 
 .quill-wrapper {
@@ -159,12 +165,13 @@
 }
 
 .city-quill-editor .ql-toolbar {
-  border: 2px solid #e8e2d4;
+  border: 1px solid #f0f0f0;
   border-radius: 12px 12px 0 0;
+  background: #fafafa;
 }
 
 .city-quill-editor .ql-container {
-  border: 2px solid #e8e2d4;
+  border: 1px solid #f0f0f0;
   border-top: none;
   border-radius: 0 0 12px 12px;
   min-height: 300px;
@@ -173,9 +180,9 @@
 .city-quill-editor .ql-editor {
   min-height: 280px;
   line-height: 1.6;
+  font-size: 0.85rem;
 }
 
-/* Координаты */
 .coordinates-inputs {
   display: flex;
   gap: 15px;
@@ -191,10 +198,10 @@
 
 .coord-input label {
   display: block;
-  font-size: 0.75rem;
-  color: #666;
+  font-size: 0.7rem;
+  color: #999;
   margin-bottom: 5px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .geocode-btn {
@@ -202,43 +209,39 @@
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
-  background: #f0e8dc;
-  border: 1px solid #d4c8b5;
-  border-radius: 8px;
+  background: #f8f8f8;
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 0.875rem;
-  color: #5a4a2e;
-  transition: all 0.2s;
+  font-size: 0.8rem;
+  color: #1a1a1a;
+  transition: all 0.2s ease;
   white-space: nowrap;
 }
 
 .geocode-btn:hover {
-  background: #e8ddcd;
-  border-color: #b22222;
-  color: #b22222;
+  background: #f0f0f0;
 }
 
-/* Карта */
 .map-selector {
   margin-top: 10px;
 }
 
 .map-selector .form-hint {
   margin-top: 8px;
-  font-size: 0.75rem;
-  color: #888;
+  font-size: 0.7rem;
+  color: #999;
 }
 
-/* Превью изображения */
 .image-preview {
-  background: #f5f0e6;
+  background: #fafafa;
   border-radius: 12px;
   overflow: hidden;
   min-height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #e0d6c5;
+  border: 1px solid #f0f0f0;
 }
 
 .image-preview img {
@@ -261,15 +264,14 @@
 
 .image-placeholder p {
   margin: 5px 0;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
 }
 
 .image-placeholder span {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: #bbb;
 }
 
-/* Выбранные категории */
 .selected-categories {
   display: flex;
   flex-wrap: wrap;
@@ -281,36 +283,12 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 12px;
-  border-radius: 20px;
-  border: 1px solid;
-  font-size: 0.875rem;
-  background: white;
-}
-
-/* Кнопка сохранения со спиннером */
-.save-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 24px;
-  background: #b22222;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.save-btn:hover:not(:disabled) {
-  background: #8b1a1a;
-}
-
-.save-btn:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
+  padding: 5px 12px;
+  border-radius: 30px;
+  border: 1px solid #f0f0f0;
+  font-size: 0.8rem;
+  background: #fafafa;
+  color: #1a1a1a;
 }
 
 .btn-spinner {
@@ -328,19 +306,27 @@
   }
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
   .coordinates-inputs {
     flex-direction: column;
     gap: 10px;
   }
-  
+
   .geocode-btn {
     justify-content: center;
     width: 100%;
   }
-  
+
   .coord-input {
     width: 100%;
+  }
+
+  .add-container {
+    padding: 20px 16px;
+  }
+
+  .form-section,
+  .preview-section {
+    padding: 20px;
   }
 }

@@ -94,13 +94,11 @@ const AdminPage: React.FC = () => {
       });
   };
 
-  // Имитация загрузки данных (без API)
   useEffect(() => {
     getAdmins();
 
     getCities();
 
-    // Статистика
     setStats({
       totalCities: cities.length,
       totalAdmins: admins.length,
@@ -115,8 +113,12 @@ const AdminPage: React.FC = () => {
     setLoading(false);
   }, []);
 
+  useEffect(() => {
+    getAdmins();
+  }, [addingAdmin]);
+
   const handleAddAdmin = async (form: RegisterFormsInput) => {
-    if (!newAdmin.username || !newAdmin.email || !newAdmin.password) {
+    if (!form.userName || !form.email || !form.password) {
       alert("Заполните все поля");
       return;
     }
@@ -124,10 +126,11 @@ const AdminPage: React.FC = () => {
     setAddingAdmin(true);
 
     await registerAdminAPI(form.userName, form.email, form.password);
+    setAddingAdmin(false);
   };
 
   const handleDeleteAdmin = async (id: number) => {
-    if (user === currentAdmin?.id) {
+     if (user === currentAdmin) {
       alert("Нельзя удалить самого себя");
       return;
     }
@@ -179,12 +182,12 @@ const AdminPage: React.FC = () => {
           </div>
           <div className="admin-profile">
             <div className="admin-avatar">
-              {currentAdmin?.username.charAt(0).toUpperCase()}
+              {user?.username.charAt(0).toUpperCase()}
             </div>
             <div className="admin-info">
-              <span className="admin-name">{currentAdmin?.username}</span>
+              <span className="admin-name">{user?.username}</span>
               <span className="admin-role-badge">
-                {currentAdmin?.role === "super_admin"
+                {user?.role === "SUPERADMIN"
                   ? "Супер-администратор"
                   : "Администратор"}
               </span>
@@ -327,11 +330,11 @@ const AdminPage: React.FC = () => {
                         {city.imageUrl && (
                           <img
                             src={city.imageUrl}
-                            alt={city.name}
+                            alt={city.names[0]}
                             className="city-mini-image"
                           />
                         )}
-                        <span className="city-name-text">{city.name}</span>
+                        <span className="city-name-text">{city.names[0]}</span>
                       </div>
                     </td>
                     <td className="contribution-cell">{city.contribution}</td>
@@ -399,14 +402,16 @@ const AdminPage: React.FC = () => {
                   <tr
                     key={admin.id}
                     className={
-                      admin.id === currentAdmin?.id ? "current-user-row" : ""
+                      admin.username === user?.username
+                        ? "current-user-row"
+                        : ""
                     }
                   >
                     <td>#{admin.id}</td>
                     <td>
                       <div className="admin-name-cell">
                         {admin.username}
-                        {admin.id === currentAdmin?.id && (
+                         {admin.username === user?.username && (
                           <span className="current-badge">Вы</span>
                         )}
                       </div>
@@ -414,7 +419,7 @@ const AdminPage: React.FC = () => {
                     <td>{admin.email}</td>
                     <td>
                       <span className={`role-badge ${admin.role}`}>
-                        {admin.role === "super_admin" ? (
+                        {admin.role === "SUPERADMIN" ? (
                           <>
                             <Crown size={12} /> Супер-админ
                           </>
@@ -431,9 +436,9 @@ const AdminPage: React.FC = () => {
                       <button
                         className="delete-btn"
                         onClick={() => handleDeleteAdmin(admin.id)}
-                        disabled={admin.id === currentAdmin?.id}
+                        disabled={admin.username === user?.username}
                         title={
-                          admin.id === currentAdmin?.id
+                          admin.username === user?.username
                             ? "Нельзя удалить себя"
                             : "Удалить"
                         }

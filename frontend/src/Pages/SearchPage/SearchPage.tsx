@@ -40,15 +40,17 @@ const SearchPage = (props: Props) => {
 
   const filteredData = cities.filter((city) => {
     if (activeCategory !== "all") {
-      console.log("Here");
       const catIds = categoriesMap[activeCategory];
       if (!city.categories.some((c) => catIds.includes(c))) return false;
     }
-    if (
-      searchTerm &&
-      !city.names[0].toLowerCase().includes(searchTerm.toLowerCase())
-    )
-      return false;
+
+    if (searchTerm) {
+      const lowerSearch = searchTerm.toLowerCase();
+      const hasMatchingName = city.names.some((name) =>
+        name.toLowerCase().includes(lowerSearch),
+      );
+      if (!hasMatchingName) return false;
+    }
 
     return true;
   });

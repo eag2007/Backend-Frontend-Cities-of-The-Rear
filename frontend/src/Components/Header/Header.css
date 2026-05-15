@@ -1,60 +1,70 @@
 .main-header {
-    background: #2c2c2c;
-    border-bottom: 5px solid #b22222;
+    background: #1a1a1a;
+    border-bottom: none;
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 .header-container {
     max-width: 1300px;
     margin: 0 auto;
-    padding: 15px 20px;
+    padding: 16px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
 .logo h1 {
     font-size: 1.5rem;
-    color: #fff;
-    letter-spacing: 1px;
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: -0.3px;
     cursor: pointer;
+    margin: 0;
 }
 
 .logo span {
-    font-size: 0.8rem;
-    color: #b22222;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #888;
     display: block;
+    margin-top: 4px;
 }
 
 #exitLink {
-    font-size: 1rem;
-    background-color: #b22222;
-    border-radius: 10%;
-    padding: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
 }
 
 #exitLink:hover {
-    color: #fff;
+    color: #ccc;
 }
 
 nav ul {
     display: flex;
-    gap: 25px;
+    gap: 32px;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 nav ul li a {
-    color: #ddd;
+    color: #aaa;
     text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
+    font-weight: 400;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
     padding: 5px 0;
 }
 
 nav ul li a:hover {
-    color: #b22222;
+    color: #ffffff;
 }

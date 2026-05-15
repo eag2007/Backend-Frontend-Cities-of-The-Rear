@@ -1,22 +1,65 @@
 .hero-main {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://avatars.mds.yandex.net/get-zen_doc/1881806/pub_5d3f992cf3222300adc93bae_5d3fb513c66c9d00adf93ce6/scale_1200');
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
     background-size: cover;
     background-position: center;
-    height: 400px;
+    height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.05) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
 }
 
 .hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    text-transform: uppercase;
+    font-size: 3.5rem;
+    font-weight: 400;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    text-transform: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
 .hero-content p {
-    font-size: 1.3rem;
-    font-style: italic;
+    font-size: 1.25rem;
+    font-weight: 400;
+    font-style: normal;
+    color: #d0d0d0;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+@media (max-width: 768px) {
+    .hero-main {
+        height: 400px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
 }

@@ -1,12 +1,31 @@
 .main-footer {
-    background: #2c2c2c;
-    color: #ccc;
+    background: #f8f8f8;
+    color: #666666;
     text-align: center;
-    padding: 30px;
-    margin-top: 60px;
-    border-top: 5px solid #b22222;
+    padding: 48px 20px;
+    margin-top: 0;
+    border-top: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .footer-container p {
-    margin: 5px 0;
+    margin: 8px 0;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+}
+
+@media (max-width: 768px) {
+    .main-footer {
+        padding: 40px 20px;
+    }
+
+    .footer-container p {
+        font-size: 0.75rem;
+    }
 }

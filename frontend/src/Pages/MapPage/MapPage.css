@@ -1,15 +1,17 @@
 .cities-map-page {
   padding: 40px 0;
-  background: #f5f0e6;
+  background: #ffffff;
   min-height: 100vh;
 }
 
 .page-title {
   text-align: center;
   font-size: 2rem;
-  margin-bottom: 20px;
-  color: #b22222;
-  font-weight: 600;
+  font-weight: 400;
+  margin-bottom: 16px;
+  color: #1a1a1a;
+  letter-spacing: -0.3px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
 .page-description {
@@ -18,18 +20,19 @@
   margin: 0 auto 40px;
   color: #666;
   line-height: 1.6;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  font-weight: 400;
 }
 
-/* Секции статистики */
 .stats-section {
   margin-bottom: 40px;
 }
 
 .stats-title {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
+  font-weight: 400;
   margin-bottom: 20px;
-  color: #4a3b2a;
+  color: #1a1a1a;
   text-align: center;
 }
 
@@ -41,17 +44,19 @@
 }
 
 .stat-card-mini {
-  background: white;
+  background: #ffffff;
   padding: 20px 30px;
-  border-radius: 12px;
+  border-radius: 16px;
   text-align: center;
   min-width: 140px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease;
+  border: 1px solid #f0f0f0;
 }
 
 .stat-card-mini:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
 }
 
 .stat-card-mini .stat-icon {
@@ -61,30 +66,31 @@
 
 .stat-card-mini .stat-number {
   font-size: 2rem;
-  font-weight: bold;
+  font-weight: 500;
   margin-bottom: 5px;
+  color: #1a1a1a;
 }
 
 .stat-card-mini .stat-label {
-  font-size: 0.875rem;
-  color: #666;
+  font-size: 0.8rem;
+  color: #999;
 }
 
-.stat-card-mini.hero .stat-number { color: #ffd700; }
-.stat-card-mini.military .stat-number { color: #b22222; }
-.stat-card-mini.labor .stat-number { color: #2c5282; }
-.stat-card-mini.weapon .stat-number { color: #dc2626; }
-.stat-card-mini.technic .stat-number { color: #f59e0b; }
-.stat-card-mini.uniform .stat-number { color: #8b5cf6; }
-.stat-card-mini.food .stat-number { color: #10b981; }
+.stat-card-mini.hero .stat-number { color: #1a1a1a; }
+.stat-card-mini.military .stat-number { color: #1a1a1a; }
+.stat-card-mini.labor .stat-number { color: #1a1a1a; }
+.stat-card-mini.weapon .stat-number { color: #1a1a1a; }
+.stat-card-mini.technic .stat-number { color: #1a1a1a; }
+.stat-card-mini.uniform .stat-number { color: #1a1a1a; }
+.stat-card-mini.food .stat-number { color: #1a1a1a; }
 
-/* Фильтры */
 .filters-section {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
+  background: #ffffff;
+  padding: 20px 24px;
+  border-radius: 20px;
   margin-bottom: 30px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  border: 1px solid #f0f0f0;
 }
 
 .filter-group {
@@ -92,11 +98,12 @@
 }
 
 .filter-group h4 {
-  font-size: 0.875rem;
-  color: #666;
+  font-size: 0.8rem;
+  color: #999;
   margin-bottom: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  font-weight: 400;
 }
 
 .filters {
@@ -107,67 +114,67 @@
 }
 
 .filter-btn {
-  padding: 10px 20px;
-  border: 2px solid #e0d6c5;
-  background: white;
-  color: #5a4a2e;
+  padding: 8px 20px;
+  border: 1px solid #f0f0f0;
+  background: #fafafa;
+  color: #1a1a1a;
   border-radius: 30px;
   cursor: pointer;
-  transition: all 0.3s;
-  font-weight: 500;
-  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  font-weight: 400;
+  font-size: 0.85rem;
 }
 
 .filter-btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
+  background: #f0f0f0;
 }
 
 .filter-btn.active {
-  background: #b22222;
-  border-color: #b22222;
+  background: #1a1a1a;
+  border-color: #1a1a1a;
   color: white;
 }
 
-.filter-btn.hero.active { background: #ffd700; border-color: #ffd700; color: #b22222; }
-.filter-btn.military.active { background: #b22222; border-color: #b22222; }
-.filter-btn.labor.active { background: #2c5282; border-color: #2c5282; }
-.filter-btn.weapon.active { background: #dc2626; border-color: #dc2626; }
-.filter-btn.technic.active { background: #f59e0b; border-color: #f59e0b; }
-.filter-btn.uniform.active { background: #8b5cf6; border-color: #8b5cf6; }
-.filter-btn.food.active { background: #10b981; border-color: #10b981; }
+.filter-btn.hero.active { background: #1a1a1a; border-color: #1a1a1a; color: white; }
+.filter-btn.military.active { background: #1a1a1a; border-color: #1a1a1a; color: white; }
+.filter-btn.labor.active { background: #1a1a1a; border-color: #1a1a1a; color: white; }
+.filter-btn.weapon.active { background: #1a1a1a; border-color: #1a1a1a; color: white; }
+.filter-btn.technic.active { background: #1a1a1a; border-color: #1a1a1a; color: white; }
+.filter-btn.uniform.active { background: #1a1a1a; border-color: #1a1a1a; color: white; }
+.filter-btn.food.active { background: #1a1a1a; border-color: #1a1a1a; color: white; }
 
 .clear-filter {
   display: block;
   margin: 15px auto 0;
   padding: 8px 20px;
-  background: #f0e8dc;
-  border: none;
-  border-radius: 20px;
-  color: #b22222;
+  background: #f8f8f8;
+  border: 1px solid #f0f0f0;
+  border-radius: 30px;
+  color: #1a1a1a;
   cursor: pointer;
-  font-size: 0.875rem;
-  transition: all 0.2s;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
 }
 
 .clear-filter:hover {
-  background: #e8ddcd;
+  background: #f0f0f0;
   transform: translateY(-1px);
 }
 
-/* Обертка карты */
 .map-wrapper {
   margin: 30px 0;
 }
 
-/* Информация о выбранном городе */
 .selected-city-info {
   position: relative;
-  background: white;
-  border-radius: 16px;
+  background: #ffffff;
+  border-radius: 20px;
   margin-top: 30px;
-  padding: 25px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 28px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
   animation: slideUp 0.3s ease;
+  border: 1px solid #f0f0f0;
 }
 
 @keyframes slideUp {
@@ -183,25 +190,25 @@
 
 .close-info {
   position: absolute;
-  top: 15px;
-  right: 20px;
+  top: 20px;
+  right: 24px;
   background: none;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #999;
-  transition: color 0.2s;
+  color: #ccc;
+  transition: color 0.2s ease;
   padding: 5px;
   line-height: 1;
 }
 
 .close-info:hover {
-  color: #b22222;
+  color: #1a1a1a;
 }
 
 .city-info-content {
   display: flex;
-  gap: 25px;
+  gap: 28px;
   flex-wrap: wrap;
 }
 
@@ -209,7 +216,7 @@
   width: 250px;
   height: 200px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 16px;
   flex-shrink: 0;
 }
 
@@ -219,15 +226,17 @@
 }
 
 .city-info-text h3 {
-  font-size: 1.75rem;
-  color: #b22222;
-  margin-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+  letter-spacing: -0.3px;
 }
 
 .city-info-categories {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
   margin-bottom: 20px;
 }
 
@@ -235,55 +244,58 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 5px 12px;
+  padding: 4px 12px;
   border-radius: 20px;
-  border: 1px solid;
-  font-size: 0.875rem;
-  background: white;
+  border: 1px solid #f0f0f0;
+  font-size: 0.75rem;
+  background: #fafafa;
+  color: #666;
 }
 
 .city-info-contribution {
-  font-size: 1rem;
-  color: #444;
+  font-size: 0.9rem;
+  color: #1a1a1a;
   margin-bottom: 15px;
   line-height: 1.5;
+  font-weight: 500;
 }
 
 .city-info-desc {
   color: #666;
   line-height: 1.6;
   margin-bottom: 20px;
+  font-size: 0.85rem;
 }
 
 .city-info-link {
   display: inline-block;
   padding: 10px 24px;
-  background: #b22222;
+  background: #1a1a1a;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 30px;
   cursor: pointer;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 500;
-  transition: background 0.2s;
+  transition: all 0.2s ease;
   text-decoration: none;
 }
 
 .city-info-link:hover {
-  background: #8b1a1a;
+  background: #333333;
+  transform: translateY(-1px);
 }
 
-/* Загрузка */
 .loading-spinner {
   text-align: center;
   padding: 100px;
 }
 
 .spinner {
-  width: 50px;
-  height: 50px;
-  border: 3px solid #f3f3f3;
-  border-top: 3px solid #b22222;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #f0f0f0;
+  border-top: 2px solid #1a1a1a;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto 20px;
@@ -294,27 +306,26 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
   .cities-map-page {
     padding: 20px 0;
   }
-  
+
   .page-title {
     font-size: 1.5rem;
   }
-  
+
   .stat-card-mini {
     padding: 15px 20px;
     min-width: 100px;
   }
-  
+
   .stat-card-mini .stat-number {
     font-size: 1.5rem;
   }
-  
+
   .filter-btn {
-    padding: 6px 12px;
+    padding: 6px 14px;
     font-size: 0.75rem;
   }
   

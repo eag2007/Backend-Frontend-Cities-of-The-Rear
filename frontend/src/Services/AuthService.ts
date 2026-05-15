@@ -20,7 +20,7 @@ export const loginAPI = async (email: string, password: string)=>{
 
 export const registerAdminAPI = async (username: string,email: string, password: string)=>{
     try {
-        const data = await axios.post<UserProfileToken>(api+"account/register-admin",{
+        const data = await axios.post<UserProfileToken>(api+"admin/create",{
             username: username,
             email: email,
             password: password,
@@ -33,7 +33,7 @@ export const registerAdminAPI = async (username: string,email: string, password:
 
 export const deleteAccountByIdApi = async (id:number)=>{
     try {
-        const data = await axios.delete(api+`account/admin/${number}`);
+        const data = await axios.delete(api+`auth/delete/${id}`);
         return data;
     } catch (error) {
         handleError(error)
