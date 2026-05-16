@@ -13,8 +13,7 @@ export const loginAPI = async (email: string, password: string)=>{
         return data;
     } catch (error) {
         handleError(error)
-        
-        console.log(error)
+        throw error;
     } 
 }
 

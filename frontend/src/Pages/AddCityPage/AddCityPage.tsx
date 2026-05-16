@@ -213,7 +213,6 @@ const AddCityPage: React.FC = () => {
           <div className="add-form-column">
             <div className="form-section">
               <label className="form-label">
-                <span className="label-icon">🏙️</span>
                 Названия города
                 <span className="required">*</span>
               </label>
@@ -242,7 +241,6 @@ const AddCityPage: React.FC = () => {
 
             <div className="form-section">
               <label className="form-label">
-                <span className="label-icon">📍</span>
                 Координаты на карте
                 <span className="required">*</span>
               </label>
@@ -280,10 +278,7 @@ const AddCityPage: React.FC = () => {
             </div>
 
             <div className="form-section">
-              <label className="form-label">
-                <span className="label-icon">🖼️</span>
-                URL изображения
-              </label>
+              <label className="form-label">URL изображения</label>
               <input
                 type="text"
                 className="form-input"
@@ -298,7 +293,6 @@ const AddCityPage: React.FC = () => {
 
             <div className="form-section">
               <label className="form-label">
-                <span className="label-icon">📝</span>
                 Краткое описание
                 <span className="required">*</span>
               </label>
@@ -319,7 +313,6 @@ const AddCityPage: React.FC = () => {
 
             <div className="form-section">
               <label className="form-label">
-                <span className="label-icon">🏆</span>
                 Основной вклад в Победу
                 <span className="required">*</span>
               </label>
@@ -338,10 +331,7 @@ const AddCityPage: React.FC = () => {
             </div>
 
             <div className="form-section">
-              <label className="form-label">
-                <span className="label-icon">🏷️</span>
-                Категории
-              </label>
+              <label className="form-label">Категории</label>
               <div className="categories-grid">
                 {categories.map((cat) => (
                   <button
@@ -382,10 +372,7 @@ const AddCityPage: React.FC = () => {
 
           <div className="add-preview-column">
             <div className="preview-section">
-              <label className="form-label">
-                <span className="label-icon">👁️</span>
-                Превью изображения
-              </label>
+              <label className="form-label">Превью изображения</label>
               <div className="image-preview">
                 {city.imageUrl ? (
                   <img
@@ -424,7 +411,6 @@ const AddCityPage: React.FC = () => {
 
             <div className="preview-section">
               <label className="form-label">
-                <span className="label-icon">🗺️</span>
                 Выберите местоположение на карте
               </label>
               <div className="map-selector">
@@ -453,10 +439,7 @@ const AddCityPage: React.FC = () => {
             </div>
 
             <div className="preview-section">
-              <label className="form-label">
-                <span className="label-icon">📖</span>
-                Полное описание
-              </label>
+              <label className="form-label">Полное описание</label>
               <div className="quill-wrapper">
                 <ReactQuill
                   theme="snow"
@@ -476,10 +459,7 @@ const AddCityPage: React.FC = () => {
 
             {city.categories.length > 0 && (
               <div className="preview-section">
-                <label className="form-label">
-                  <span className="label-icon">🏷️</span>
-                  Выбранные категории
-                </label>
+                <label className="form-label">Выбранные категории</label>
                 <div className="selected-categories">
                   {city.categories.map((catId) => {
                     const cat = categories.find((c) => c.id === catId);

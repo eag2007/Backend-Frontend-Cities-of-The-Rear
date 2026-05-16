@@ -130,7 +130,7 @@ const AdminPage: React.FC = () => {
   };
 
   const handleDeleteAdmin = async (id: number) => {
-     if (user === currentAdmin) {
+    if (user === currentAdmin) {
       alert("Нельзя удалить самого себя");
       return;
     }
@@ -411,7 +411,7 @@ const AdminPage: React.FC = () => {
                     <td>
                       <div className="admin-name-cell">
                         {admin.username}
-                         {admin.username === user?.username && (
+                        {admin.username === user?.username && (
                           <span className="current-badge">Вы</span>
                         )}
                       </div>

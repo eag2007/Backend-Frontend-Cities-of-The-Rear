@@ -21,6 +21,6 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "../Cities-of-The-Rear/frontend/src"
   ]
 }

@@ -39,23 +39,21 @@ export const UserProvider = ({ children }: Props) => {
   }, [token]);
 
   const loginUser = async (email: string, password: string) => {
-    await loginAPI(email, password)
-      .then((res) => {
-        if (res) {
-          localStorage.setItem("token", res?.data.token);
-          const userObj = {
-            username: res?.data.username,
-            email: res?.data.email,
-            role: res?.data.role,
-            token: res?.data.token,
-          };
-          localStorage.setItem("user", JSON.stringify(userObj));
-          setToken(res?.data.token);
-          setUser(userObj);
-          navigate("/");
-        }
-      })
-      .catch((e) => console.log("Server error occured"));
+    await loginAPI(email, password).then((res) => {
+      if (res) {
+        localStorage.setItem("token", res?.data.token);
+        const userObj = {
+          username: res?.data.username,
+          email: res?.data.email,
+          role: res?.data.role,
+          token: res?.data.token,
+        };
+        localStorage.setItem("user", JSON.stringify(userObj));
+        setToken(res?.data.token);
+        setUser(userObj);
+        navigate("/");
+      }
+    });
   };
 
   const isLoggedIn = () => {

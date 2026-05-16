@@ -1,66 +1,75 @@
 .filters-panel {
     background: #ffffff;
-    padding: 24px 28px;
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    padding: 20px 24px;
+    border-radius: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
     margin-bottom: 40px;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 16px;
     align-items: center;
     justify-content: space-between;
-    border-left: none;
     border: 1px solid #f0f0f0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
 .search-box {
     flex: 2;
-    min-width: 250px;
+    min-width: 240px;
+    position: relative;
 }
 
 .search-box input {
     width: 100%;
-    padding: 12px 20px;
-    border: 1px solid #f0f0f0;
-    border-radius: 40px;
-    font-size: 0.95rem;
+    padding: 12px 18px;
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    font-size: 0.9rem;
     font-weight: 400;
     transition: all 0.2s ease;
-    background: #fafafa;
+    background: #ffffff;
+    color: #1a1a1a;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
 .search-box input:focus {
-    border-color: #1a1a1a;
     outline: none;
+    border-color: #1a1a1a;
     background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.search-box input::placeholder {
+    color: #aaa;
 }
 
 .category-filters {
     flex: 3;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
     justify-content: center;
 }
 
 .filter-btn {
-    padding: 8px 20px;
-    border: 1px solid #f0f0f0;
-    background: #fafafa;
+    padding: 8px 18px;
+    border: none;
+    background: transparent;
     border-radius: 30px;
     cursor: pointer;
     font-weight: 400;
     font-size: 0.85rem;
     transition: all 0.2s ease;
-    color: #1a1a1a;
+    color: #666;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
 .filter-btn:hover {
-    background: #f0f0f0;
+    background: #f5f5f5;
+    color: #1a1a1a;
 }
 
 .filter-btn.active {
     background: #1a1a1a;
     color: white;
-    border-color: #1a1a1a;
 }

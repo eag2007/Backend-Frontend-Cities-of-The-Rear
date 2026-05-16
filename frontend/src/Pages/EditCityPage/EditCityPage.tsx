@@ -84,13 +84,10 @@ const EditCityPage: React.FC = () => {
   }, [city.names]);
 
   const categories: Category[] = [
-    { id: 1, name: "Город-герой", icon: "⭐", color: "#ffd700" },
-    { id: 2, name: "Город воинской славы", icon: "★", color: "#b22222" },
-    { id: 3, name: "Город трудовой доблести", icon: "⚒️", color: "#2c5282" },
-    { id: 4, name: "Оружие", icon: "🔫", color: "#dc2626" },
-    { id: 5, name: "Техника", icon: "⚙️", color: "#f59e0b" },
-    { id: 6, name: "Продовольствие", icon: "🍞", color: "#10b981" },
-    { id: 7, name: "Обмундирование", icon: "👕", color: "#8b5cf6" },
+    { id: 1, name: "Оружие", icon: "", color: "#000000" },
+    { id: 2, name: "Обмундирование", icon: "", color: "#000000" },
+    { id: 3, name: "Техника", icon: "", color: "#000000" },
+    { id: 4, name: "Продовольствие", icon: "", color: "#000000" },
   ];
 
   const quillModules = {
@@ -234,7 +231,7 @@ const EditCityPage: React.FC = () => {
         city.categories,
         city.coordinates,
       );
-      navigate("/admin");
+      navigate("/");
     } catch (error) {
       console.log("Не удалось обновить город", error);
       alert("Произошла ошибка при сохранении");
@@ -247,7 +244,7 @@ const EditCityPage: React.FC = () => {
     setDeleting(true);
     try {
       await deleteCityByIdApi(Number(id));
-      navigate("/");
+      navigate("/admin");
     } catch (error) {
       console.log("Не удалось удалить город", error);
       alert("Произошла ошибка при удалении");
@@ -337,7 +334,6 @@ const EditCityPage: React.FC = () => {
           <div className="edit-form-column">
             <div className="form-section">
               <label className="form-label">
-                <span className="label-icon">🏙️</span>
                 Названия города
                 <span className="required">*</span>
               </label>
@@ -366,7 +362,6 @@ const EditCityPage: React.FC = () => {
 
             <div className="form-section">
               <label className="form-label">
-                <span className="label-icon">📍</span>
                 Координаты на карте
                 <span className="required">*</span>
               </label>
@@ -404,10 +399,7 @@ const EditCityPage: React.FC = () => {
             </div>
 
             <div className="form-section">
-              <label className="form-label">
-                <span className="label-icon">🖼️</span>
-                URL изображения
-              </label>
+              <label className="form-label">URL изображения</label>
               <input
                 type="text"
                 className="form-input"
@@ -422,7 +414,6 @@ const EditCityPage: React.FC = () => {
 
             <div className="form-section">
               <label className="form-label">
-                <span className="label-icon">📝</span>
                 Краткое описание
                 <span className="required">*</span>
               </label>
@@ -443,7 +434,6 @@ const EditCityPage: React.FC = () => {
 
             <div className="form-section">
               <label className="form-label">
-                <span className="label-icon">🏆</span>
                 Основной вклад в Победу
                 <span className="required">*</span>
               </label>
@@ -462,10 +452,7 @@ const EditCityPage: React.FC = () => {
             </div>
 
             <div className="form-section">
-              <label className="form-label">
-                <span className="label-icon">🏷️</span>
-                Категории
-              </label>
+              <label className="form-label">Категории</label>
               <div className="categories-grid">
                 {categories.map((cat) => (
                   <button
@@ -507,10 +494,7 @@ const EditCityPage: React.FC = () => {
 
           <div className="edit-preview-column">
             <div className="preview-section">
-              <label className="form-label">
-                <span className="label-icon">👁️</span>
-                Превью изображения
-              </label>
+              <label className="form-label">Превью изображения</label>
               <div className="image-preview">
                 {city.imageUrl ? (
                   <img
@@ -549,7 +533,6 @@ const EditCityPage: React.FC = () => {
 
             <div className="preview-section">
               <label className="form-label">
-                <span className="label-icon">🗺️</span>
                 Выберите местоположение на карте
               </label>
               <div className="map-selector">
@@ -578,10 +561,7 @@ const EditCityPage: React.FC = () => {
             </div>
 
             <div className="preview-section">
-              <label className="form-label">
-                <span className="label-icon">📖</span>
-                Полное описание
-              </label>
+              <label className="form-label">Полное описание</label>
               <div className="quill-wrapper">
                 <ReactQuill
                   theme="snow"
@@ -601,10 +581,7 @@ const EditCityPage: React.FC = () => {
 
             {city.categories.length > 0 && (
               <div className="preview-section">
-                <label className="form-label">
-                  <span className="label-icon">🏷️</span>
-                  Выбранные категории
-                </label>
+                <label className="form-label">Выбранные категории</label>
                 <div className="selected-categories">
                   {city.categories.map((catId) => {
                     const cat = categories.find((c) => c.id === catId);
@@ -635,7 +612,6 @@ const EditCityPage: React.FC = () => {
           onClick={() => setShowDeleteConfirm(false)}
         >
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <div className="modal-icon">⚠️</div>
             <h3>Удаление города</h3>
             <p>
               Вы уверены, что хотите удалить <strong>{mainCityName}</strong>?
