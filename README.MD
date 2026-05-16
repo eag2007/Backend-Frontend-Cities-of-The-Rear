@@ -63,4 +63,4 @@ react-router
 
 ### Лицензия 
 
-MIT - Лицензия
+MIT - Лицензия в файле LICENSE
