@@ -15,6 +15,7 @@ eggs/
 venv/
 env/
 ENV/
+.env
 
 # IDE
 .idea/

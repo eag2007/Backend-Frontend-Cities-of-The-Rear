@@ -1,6 +1,8 @@
+import os
 import bcrypt
 from models import db
 from models.admin import Admin
+
 
 def create_superadmin():
     existing = Admin.query.filter_by(role='SUPERADMIN').first()
@@ -8,7 +10,9 @@ def create_superadmin():
     if existing:
         return
 
-    password = "SuperSecret123!"  # потом можешь убрать в ENV
+    username = os.getenv("SUPERADMIN_USERNAME", "superadmin")
+    email = os.getenv("SUPERADMIN_EMAIL", "admin@system.local")
+    password = os.getenv("SUPERADMIN_PASSWORD", "SuperSecret123!")
 
     hashed = bcrypt.hashpw(
         password.encode('utf-8'),
@@ -16,8 +20,8 @@ def create_superadmin():
     )
 
     admin = Admin(
-        username="superadmin",
-        email="admin@system.local",
+        username=username,
+        email=email,
         password_hash=hashed.decode('utf-8'),
         role="SUPERADMIN"
     )
@@ -26,5 +30,4 @@ def create_superadmin():
     db.session.commit()
 
     print("SUPERADMIN CREATED")
-    print("EMAIL: admin@system.local")
-    print("PASSWORD: SuperSecret123!")
+    print("EMAIL:", email)

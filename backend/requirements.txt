@@ -4,3 +4,4 @@ Flask-JWT-Extended
 Flask-Cors
 bcrypt
 python-dotenv
+psycopg2-binary

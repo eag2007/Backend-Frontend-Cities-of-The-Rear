@@ -7,7 +7,7 @@ from models.category import city_categories
 class City(db.Model):
     __tablename__ = 'cities'
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     image_url = db.Column(db.String)
     short_desc = db.Column(db.Text)
     long_desc = db.Column(db.Text)
