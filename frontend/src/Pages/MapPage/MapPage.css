@@ -343,7 +343,6 @@
   }
 }
 
-/* ФИНАЛЬНЫЙ ФИКС - КНОПКИ НЕ УЕЗЖАЮТ */
 .leaflet-control-zoom {
   position: fixed !important;
   bottom: 100px !important;
