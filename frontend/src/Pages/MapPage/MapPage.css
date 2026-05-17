@@ -342,35 +342,3 @@
     font-size: 1.25rem;
   }
 }
-
-.leaflet-control-zoom {
-  position: fixed !important;
-  bottom: 100px !important;
-  right: 20px !important;
-  top: auto !important;
-  left: auto !important;
-  z-index: 9999 !important;
-}
-
-.leaflet-touch .leaflet-control-zoom {
-  border: none !important;
-}
-
-.leaflet-control-zoom-in,
-.leaflet-control-zoom-out {
-  background: white !important;
-  border: 1px solid #e5e5e5 !important;
-  border-radius: 12px !important;
-  width: 44px !important;
-  height: 44px !important;
-  font-size: 22px !important;
-  font-weight: 500 !important;
-  line-height: 42px !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-}
-
-.leaflet-control-zoom-in:hover,
-.leaflet-control-zoom-out:hover {
-  background: #f5f5f5 !important;
-  transform: scale(1.05);
-}

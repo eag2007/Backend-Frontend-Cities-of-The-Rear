@@ -61,3 +61,5 @@ staticfiles/
 dist/
 build/
 *.pyc
+
+secter_config

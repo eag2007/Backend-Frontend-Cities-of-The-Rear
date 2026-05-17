@@ -13,6 +13,7 @@ import {
   updateCityApi,
 } from "../../Services/CityService";
 import { City, CityPost } from "../../Models/City";
+import { BounceLoader } from "react-spinners";
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -71,10 +72,8 @@ const EditCityPage: React.FC = () => {
     coordinates: [55.751244, 37.618423],
   });
 
-  // Состояние для строки ввода названий (через запятую)
   const [namesInput, setNamesInput] = useState("");
 
-  // Синхронизация namesInput с city.names при загрузке
   useEffect(() => {
     if (city.names && city.names.length) {
       setNamesInput(city.names.join(", "));
@@ -195,7 +194,6 @@ const EditCityPage: React.FC = () => {
   };
 
   const handleSave = async () => {
-    // Валидация: проверяем, что есть хотя бы одно непустое название
     const validNames = city.names.filter((name) => name.trim() !== "");
     if (validNames.length === 0) {
       alert("Введите хотя бы одно название города");
@@ -261,9 +259,15 @@ const EditCityPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="edit-page-loading">
-        <div className="loading-spinner"></div>
-        <p>Загрузка данных...</p>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "200px",
+        }}
+      >
+        <BounceLoader />
       </div>
     );
   }

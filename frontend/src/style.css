@@ -2,12 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background: #ffffff;  /* ← БЕЛЫЙ ФОН */
-    color: #1a1a1a;
+    background: white;
+    color: #2c2c2c;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -25,68 +25,65 @@ body {
     margin: 0;
 }
 
+/* Buttons */
 .btn-primary {
-    background: #1a1a1a;
+    background: #b22222;
     color: white;
     border: none;
     padding: 10px 24px;
-    border-radius: 30px;
+    border-radius: 8px;
     cursor: pointer;
-    font-weight: 500;
-    transition: all 0.2s ease;
+    font-weight: 600;
+    transition: background 0.3s;
 }
 
 .btn-primary:hover {
-    background: #333333;
+    background: #8b1a1a;
 }
 
 .btn-secondary {
-    background: #f8f8f8;
-    color: #1a1a1a;
-    border: 1px solid #f0f0f0;
+    background: #ddd;
+    color: #333;
+    border: none;
     padding: 10px 24px;
-    border-radius: 30px;
+    border-radius: 8px;
     cursor: pointer;
-    font-weight: 500;
-    transition: all 0.2s ease;
+    font-weight: 600;
 }
 
 .btn-secondary:hover {
-    background: #f0f0f0;
+    background: #ccc;
 }
 
 .btn-block {
     width: 100%;
 }
 
+/* Forms */
 .form-group {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    font-weight: 500;
-    color: #1a1a1a;
-    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #f0f0f0;
-    border-radius: 12px;
-    font-size: 0.9rem;
-    background: #fafafa;
-    transition: all 0.2s ease;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #1a1a1a;
-    background: #ffffff;
+    border-color: #b22222;
 }
 
 .checkbox-group {
@@ -99,7 +96,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    font-weight: 400;
+    font-weight: normal;
 }
 
 .coord-group {
@@ -117,3 +114,4 @@ body {
     justify-content: flex-end;
     margin-top: 25px;
 }
+

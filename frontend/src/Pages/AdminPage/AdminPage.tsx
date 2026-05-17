@@ -25,6 +25,7 @@ import {
   Trash2,
   Users,
 } from "lucide-react";
+import { BounceLoader } from "react-spinners";
 
 type RegisterFormsInput = {
   email: string;
@@ -163,9 +164,15 @@ const AdminPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="admin-dashboard-loading">
-        <div className="loading-spinner"></div>
-        <p>Загрузка панели управления...</p>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "200px",
+        }}
+      >
+        <BounceLoader />
       </div>
     );
   }
@@ -507,6 +514,9 @@ const AdminPage: React.FC = () => {
                   placeholder="Введите пароль"
                   {...register("password")}
                 />
+                {errors.password && (
+                  <p className="error-message">{errors.password.message}</p>
+                )}
               </div>
               <div className="modal-actions">
                 <button

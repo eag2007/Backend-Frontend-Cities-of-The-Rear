@@ -4,9 +4,8 @@ import CitiesGrid from "../../Components/SearchPage/CitiesGrid/CitiesGrid";
 import { City } from "../../Models/City";
 import { useEffect, useState } from "react";
 import { getAllCitiesApi, getCityByIdApi } from "../../Services/CityService";
-import { Search } from "lucide-react";
-
-type Props = {};
+import { set } from "react-hook-form";
+import { BounceLoader } from "react-spinners";
 
 const categoriesMap: { [key: string]: number[] } = {
   all: [],
@@ -16,12 +15,14 @@ const categoriesMap: { [key: string]: number[] } = {
   food: [4],
 };
 
-const SearchPage = (props: Props) => {
+const SearchPage = () => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [cities, setCities] = useState<City[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const getCities = async () => {
+    setLoading(true);
     await getAllCitiesApi()
       .then((res) => {
         if (res?.data) {
@@ -30,7 +31,8 @@ const SearchPage = (props: Props) => {
       })
       .catch((e) => {
         console.log("No city found");
-      });
+      })
+      .finally(() => setLoading(false));
   };
 
   useEffect(() => {
@@ -88,13 +90,26 @@ const SearchPage = (props: Props) => {
             </div>
           </div>
 
-          <div id="citiesContainer" className="cities-grid">
-            {cities.length != 0 ? (
-              <CitiesGrid data={filteredData} />
-            ) : (
-              <p>Города не найдены</p>
-            )}
-          </div>
+          {loading ? (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                minHeight: "200px",
+              }}
+            >
+              <BounceLoader />
+            </div>
+          ) : (
+            <div id="citiesContainer" className="cities-grid">
+              {cities.length != 0 ? (
+                <CitiesGrid data={filteredData} />
+              ) : (
+                <p>Города не найдены</p>
+              )}
+            </div>
+          )}
         </div>
       </main>
     </div>

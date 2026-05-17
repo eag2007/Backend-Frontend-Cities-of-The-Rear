@@ -3,10 +3,13 @@ import "../../../style.css";
 import { useEffect, useState } from "react";
 import { getAllCitiesApi } from "../../../Services/CityService";
 import { City } from "../../../Models/City";
+import { ClipLoader } from "react-spinners";
 
 type Props = {};
 
 const Statistics = (props: Props) => {
+  const [loading, setLoading] = useState(true);
+
   const [cities, setCities] = useState<City[]>([
     {
       id: 1,
@@ -29,12 +32,12 @@ const Statistics = (props: Props) => {
       })
       .catch((e) => {
         console.log("No city found");
-      });
+      })
+      .finally(() => setLoading(false));
   };
 
   useEffect(() => {
     getCities();
-    // getCities();
   }, []);
 
   return (
@@ -45,7 +48,13 @@ const Statistics = (props: Props) => {
           <div className="stats-grid">
             <div className="stat-card">
               <div className="stat-number" id="citiesCount">
-                {cities.length}
+                {loading ? (
+                  <>
+                    <ClipLoader />
+                  </>
+                ) : (
+                  cities.length
+                )}
               </div>
               <div className="stat-label">Городов в базе</div>
             </div>
@@ -54,7 +63,7 @@ const Statistics = (props: Props) => {
               <div className="stat-label">Годы войны</div>
             </div>
             <div className="stat-card">
-              <div className="stat-number">63</div>
+              <div className="stat-number">70</div>
               <div className="stat-label">Города трудовой доблести</div>
             </div>
           </div>

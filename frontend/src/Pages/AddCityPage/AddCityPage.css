@@ -330,3 +330,7 @@
     padding: 20px;
   }
 }
+
+.leaflet-control-zoom {
+  position: fixed !important;
+}
