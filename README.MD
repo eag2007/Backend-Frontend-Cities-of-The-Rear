@@ -24,6 +24,17 @@
 Необходимые библиотеки для ```backend``` находятся
 в файле ```requirements.txt```
 
+Перед запуском необходимо создать в папке ```backend``` файл ```.env```.
+Задать в нем переменный окружения вида 
+```
+DATABASE_URL=***
+JWT_SECRET_KEY=***
+SUPERADMIN_USERNAME=***
+SUPERADMIN_EMAIL=***
+SUPERADMIN_PASSWORD=***
+```
+После этого необходимо запустить ``frontend и backend``
+
 ```frontend:```
 
 ```
