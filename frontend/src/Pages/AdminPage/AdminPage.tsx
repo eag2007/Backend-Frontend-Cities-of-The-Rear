@@ -59,11 +59,7 @@ const AdminPage: React.FC = () => {
   const [cities, setCities] = useState<City[]>([]);
   const [loading, setLoading] = useState(true);
   const [showAddAdminModal, setShowAddAdminModal] = useState(false);
-  const [newAdmin, setNewAdmin] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
+
   const [addingAdmin, setAddingAdmin] = useState(false);
   const [stats, setStats] = useState({
     totalCities: 0,
@@ -76,10 +72,11 @@ const AdminPage: React.FC = () => {
       .then((res) => {
         if (res?.data) {
           setAdmins(res.data);
+          setStats((stats) => ({ ...stats, totalAdmins: admins.length }));
         }
       })
       .catch((e) => {
-        console.log("No film found");
+        console.log("No admin found");
       });
   };
 
@@ -88,6 +85,20 @@ const AdminPage: React.FC = () => {
       .then((res) => {
         if (res?.data) {
           setCities(res.data);
+
+          const categoriesCount = {
+            weapon: res.data.filter((c: City) => c.categories.includes(1))
+              .length,
+            uniform: res.data.filter((c: City) => c.categories.includes(2))
+              .length,
+            tech: res.data.filter((c: City) => c.categories.includes(3)).length,
+            food: res.data.filter((c: City) => c.categories.includes(4)).length,
+          };
+          setStats((prev) => ({
+            ...prev,
+            totalCities: res.data.length,
+            categoriesCount,
+          }));
         }
       })
       .catch((e) => {
@@ -96,22 +107,12 @@ const AdminPage: React.FC = () => {
   };
 
   useEffect(() => {
-    getAdmins();
-
-    getCities();
-
-    setStats({
-      totalCities: cities.length,
-      totalAdmins: admins.length,
-      categoriesCount: {
-        weapon: cities.filter((c) => c.categories.includes(1)).length,
-        uniform: cities.filter((c) => c.categories.includes(2)).length,
-        tech: cities.filter((c) => c.categories.includes(3)).length,
-        food: cities.filter((c) => c.categories.includes(4)).length,
-      },
-    });
-
-    setLoading(false);
+    const loadData = async () => {
+      setLoading(true);
+      await Promise.all([getAdmins(), getCities()]);
+      setLoading(false);
+    };
+    loadData();
   }, []);
 
   useEffect(() => {
